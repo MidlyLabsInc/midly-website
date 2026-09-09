@@ -8,5 +8,10 @@ Disallow: /tracking
 Disallow: /og-sprint
 Disallow: /sprint
 
+# API routes are not pages. They answer 401 or 405 to a crawler, which
+# Search Console then reports as "Blocked due to other 4xx issue" against
+# the site. /api/nurture returns 401 and /api/contact returns 405.
+Disallow: /api/
+
 # Sitemap location
 Sitemap: https://www.midly.ai/sitemap.xml
