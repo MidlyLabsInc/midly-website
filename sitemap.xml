@@ -15,7 +15,6 @@
 
   <!-- Trust + product detail -->
   <url><loc>https://www.midly.ai/security</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://www.midly.ai/investor</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.midly.ai/careers</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
 
   <!-- Content: posts listed newest-first with <lastmod> matching

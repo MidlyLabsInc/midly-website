@@ -7,6 +7,11 @@
   ],
   "redirects": [
     {
+      "source": "/investor",
+      "destination": "/",
+      "permanent": true
+    },
+    {
       "source": "/founders",
       "destination": "/teams",
       "permanent": true
@@ -31,7 +36,6 @@
       "destination": "/enterprise",
       "permanent": true
     },
-
     {
       "source": "/privacy-policy",
       "destination": "/privacy",
@@ -77,7 +81,6 @@
       "destination": "/how-it-works",
       "permanent": true
     },
-
     {
       "source": "/blog/contract-delays-and-their-financial-impact",
       "destination": "/blog/contract-workflow-cost",
@@ -93,7 +96,6 @@
       "destination": "/blog/coordination-problem",
       "permanent": true
     },
-
     {
       "source": "/blog/empowering-sales-teams",
       "destination": "/blog",
@@ -135,7 +137,7 @@
       "permanent": true
     },
     {
-      "source": "/blog/your-contracts-shouldn’t-be-a-roadblock",
+      "source": "/blog/your-contracts-shouldn\u2019t-be-a-roadblock",
       "destination": "/blog",
       "permanent": true
     },
@@ -145,7 +147,7 @@
       "permanent": true
     },
     {
-      "source": "/blog/preparing-for-launch-day\\:-what-we’re-doing-to-raise-awareness-and-build-early-adopters-for-midly",
+      "source": "/blog/preparing-for-launch-day\\:-what-we\u2019re-doing-to-raise-awareness-and-build-early-adopters-for-midly",
       "destination": "/blog",
       "permanent": true
     },
@@ -235,10 +237,6 @@
     {
       "source": "/blog/teardown-velocity-global-msa",
       "destination": "/blog/teardown-velocity-global-msa.html"
-    },
-    {
-      "source": "/investor",
-      "destination": "/investor.html"
     },
     {
       "source": "/security",
