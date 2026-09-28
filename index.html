@@ -775,12 +775,11 @@
   }
 
   /* ── FEATURES ── */
-  /* Two up, because there are four cards. At three columns the last row was
-     a ragged remainder, and the section is four claims rather than a feature
-     count, so each one gets half the width instead of a third. */
+  /* Three up, because there are six cards and they divide evenly. It was two
+     up while there were four; change this back if the count changes again. */
   .features-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1px;
     background: var(--border);
     border: 1px solid var(--border);
@@ -810,6 +809,22 @@
   }
 
   .feature-icon svg { width: 20px; height: 20px; stroke: var(--accent); fill: none; stroke-width: 1.5; }
+
+  /* The surface each card is describing, named.
+     The titles are arguments, which is right, but it meant a reader could
+     scan the whole section and never learn that AI Insights or Ask Midly
+     exist: both were named ONLY inside the pricing table, as entitlements
+     on a plan rather than as reasons to choose anything. The label carries
+     the name so scanning gets it and the title still carries the claim. */
+  .feature-name {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  [data-theme="light"] .feature-name { color: #3F5A07; }
 
   .feature-title {
     font-family: var(--font-display);
@@ -2596,6 +2611,7 @@
         <div class="feature-icon">
           <svg viewBox="0 0 20 20"><path d="M4 6h12M4 10h12M4 14h7" stroke-linecap="round"/><path d="M13 13l4 4M17 13l-4 4" stroke-linecap="round"/></svg>
         </div>
+        <div class="feature-name">Tracked changes</div>
         <div class="feature-title">Their markup, in the document</div>
         <div class="feature-desc">Every insertion and deletion the other side sends arrives as a real tracked change you accept or reject where it sits. No downloading to Word, marking up there, and uploading it back.</div>
       </div>
@@ -2603,6 +2619,7 @@
         <div class="feature-icon">
           <svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="7"/><path d="M10 7v3l2 2" stroke-linecap="round"/></svg>
         </div>
+        <div class="feature-name">AI Insights</div>
         <div class="feature-title">Graded, not listed</div>
         <div class="feature-desc">A hundred changes come back and two of them move the risk. Every clause is graded and anchored to the exact language it is talking about, so you can check each finding against your own document.</div>
       </div>
@@ -2610,6 +2627,7 @@
         <div class="feature-icon">
           <svg viewBox="0 0 20 20"><path d="M5 4h10v12l-5-3-5 3z" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 8h4" stroke-linecap="round"/></svg>
         </div>
+        <div class="feature-name">Your playbook</div>
         <div class="feature-title">It remembers what you argued</div>
         <div class="feature-desc">Your playbook, your standing instructions for a client, and the positions you took in the last round all carry into the next review. The fiftieth time you argue a clause it does not start where the first one did.</div>
       </div>
@@ -2617,8 +2635,25 @@
         <div class="feature-icon">
           <svg viewBox="0 0 20 20"><path d="M10 3l6 3v5c0 3-2.5 5.5-6 6-3.5-.5-6-3-6-6V6z" stroke-linejoin="round"/><path d="M8 10l1.5 1.5L13 8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
+        <div class="feature-name">Ask Midly</div>
         <div class="feature-title">Grounded, or it says nothing</div>
         <div class="feature-desc">No hallucinated case law and no invented citations. If Midly cannot point to the language in your document, it does not make the claim.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 20 20"><path d="M3 10h9" stroke-linecap="round"/><path d="M9 7l3 3-3 3" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 4v12" stroke-linecap="round"/></svg>
+        </div>
+        <div class="feature-name">Recommended revisions</div>
+        <div class="feature-title">One click and it is in your draft</div>
+        <div class="feature-desc">Midly does not stop at telling you the cap is wrong. It writes the replacement language, and one click puts it into the document as a tracked change in your name with the reason sitting beside the clause.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 20 20"><rect x="3" y="5" width="14" height="10" rx="2"/><path d="M3 7l7 4 7-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="feature-name">Email intake</div>
+        <div class="feature-title">Your workspace has its own address</div>
+        <div class="feature-desc">Forward the other side&rsquo;s draft from wherever it landed and it is open and read before you would have finished saving it to a folder. Their tracked changes arrive intact, not flattened.</div>
       </div>
     </div>
   </div>
