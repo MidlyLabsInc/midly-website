@@ -2391,106 +2391,65 @@
      Both links carry a source param: without it there is no way to tell which
      door is doing the work, and the whole point is to spend on the one that
      is. -->
+<section class="section" id="audience" style="border-top:1px solid var(--border);padding-top:56px;padding-bottom:56px;">
+  <div class="container">
+    <div class="section-eyebrow">Two ways in</div>
+    <h2 class="section-title" style="margin-bottom:8px;">Which one are you?</h2>
+    <p class="section-sub" style="margin-bottom:28px;">Midly does contract work for the attorney reviewing paper for clients, and for the one lawyer holding the line inside a company. The paths are different.</p>
+
+    <div style="display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));">
+
+      <a href="/attorneys?src=home-door" style="display:block;padding:24px;border:2px solid var(--border);border-radius:14px;text-decoration:none;color:inherit;transition:border-color .15s,transform .15s;" onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'" onclick="if(window.gtag)gtag('event','audience_door',{door:'attorney'})">
+        <div style="font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px;">For attorneys</div>
+        <div style="font-size:20px;font-weight:650;margin-bottom:8px;">I review contracts for clients</div>
+        <p style="font-size:14px;line-height:1.55;color:var(--text-muted);margin:0 0 14px;">Counterparty paper reviewed in 15 minutes, billable time captured against the document, a client portal, and invoices built from the time you logged.</p>
+        <span class="door-cta">See the attorney workflow →</span>
+      </a>
+
+      <a href="/teams?src=home-door" style="display:block;padding:24px;border:2px solid var(--border);border-radius:14px;text-decoration:none;color:inherit;transition:border-color .15s,transform .15s;" onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'" onclick="if(window.gtag)gtag('event','audience_door',{door:'inhouse'})">
+        <div style="font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px;">For small legal teams</div>
+        <div style="font-size:20px;font-weight:650;margin-bottom:8px;">I am the legal team here</div>
+        <p style="font-size:14px;line-height:1.55;color:var(--text-muted);margin:0 0 14px;">Review the queue in a fraction of the time, set the guardrails the business signs inside, and never miss a renewal nobody budgeted for.</p>
+        <span class="door-cta">See the in-house workflow →</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
 <section class="section" id="how">
   <div class="container">
     <div class="section-eyebrow">How It Works</div>
     <h2 class="section-title">The reading is the product.<br>The rest is what it takes to finish.</h2>
     <p class="section-sub">The markup comes back with a hundred changes in it and two of them move the risk. Midly reads the other side&rsquo;s paper against your own playbook and tells you which two. Everything else, the templates, the tracked changes, the signature and the archive, exists so you never have to leave the document to finish the job.</p>
 
-    <!--
-      THE SECTION OPENS BLANK AND ASKS FIRST.
-
-      There used to be a separate "Which one are you?" section immediately
-      above this one whose two doors navigated away to /attorneys and /teams.
-      So a visitor met a choice that sent them off the page, and then met four
-      numbered steps that also looked like they wanted a choice, before either
-      one had told them what actually happens. Two pickers back to back, and
-      the first one left.
-
-      One pick now, and it resolves in place. The deeper pages are a quiet
-      link at the end for anyone who wants the whole thing, and they keep a
-      src param so the door is still measurable.
-
-      The two walkthroughs genuinely differ, which is the only reason to ask.
-      Outside counsel bills the time and the client watches in a portal;
-      in-house explains the reason to the business and archives it. Steps one
-      to three are close because the reading IS the same job. If a future edit
-      makes the two tracks identical, delete the picker rather than keeping a
-      choice that changes nothing.
-    -->
-    <div class="track-picker">
-      <div class="track-prompt">Who are you reading for?</div>
-      <p class="track-note">The reading is the same either way. What happens once it is done is not.</p>
-      <div class="track-buttons">
-        <button type="button" class="track-btn" data-track="clients" aria-pressed="false" onclick="setTrack('clients')">Clients</button>
-        <button type="button" class="track-btn" data-track="company" aria-pressed="false" onclick="setTrack('company')">My own company</button>
-      </div>
-    </div>
-
-    <div class="how-blank" id="how-blank">Pick one and the rest of this fills in.</div>
-
-    <div class="how-grid" id="how-grid" style="display:none;">
-      <div class="steps track-steps" data-track="clients" style="display:none;">
-        <div class="step active" onclick="setStep('clients',0)">
+    <div class="how-grid">
+      <div class="steps">
+        <div class="step active" onclick="setStep(0)">
           <div class="step-accent-bar"></div>
           <div class="step-num">01</div>
           <div class="step-body">
             <div class="step-title">Their paper arrives</div>
-            <div class="step-desc">Your client forwards the counterparty draft, or it comes straight to you. Midly opens the .docx with their tracked changes intact, so every insertion and deletion is something you accept or reject rather than something you have to spot.</div>
+            <div class="step-desc">Forward it in or drop it in. Midly opens the .docx with their tracked changes intact, so every insertion and deletion is something you accept or reject rather than something you have to spot.</div>
           </div>
         </div>
-        <div class="step" onclick="setStep('clients',1)">
+        <div class="step" onclick="setStep(1)">
           <div class="step-accent-bar"></div>
           <div class="step-num">02</div>
           <div class="step-body">
             <div class="step-title">You find out what actually changed</div>
-            <div class="step-desc">Every clause graded against the playbook you built out of your own practice and anchored to the exact language, so the two changes that carry risk separate from the ninety-eight that do not.</div>
+            <div class="step-desc">Every clause graded against your own playbook and anchored to the exact language, so the two changes that carry risk separate from the ninety-eight that do not.</div>
           </div>
         </div>
-        <div class="step" onclick="setStep('clients',2)">
+        <div class="step" onclick="setStep(2)">
           <div class="step-accent-bar"></div>
           <div class="step-num">03</div>
           <div class="step-body">
             <div class="step-title">You mark it up in your voice</div>
-            <div class="step-desc">Your edits go back as tracked changes in your name, with the argument sitting next to the change. Your client watches it happen in their own portal instead of waiting on an email that says it is with legal.</div>
+            <div class="step-desc">Your edits go back as tracked changes in your name, with the argument sitting next to the change. Share a secure link and keep the discussion in one place instead of across an email thread.</div>
           </div>
         </div>
-        <div class="step" onclick="setStep('clients',3)">
-          <div class="step-accent-bar"></div>
-          <div class="step-num">04</div>
-          <div class="step-body">
-            <div class="step-title">It closes, and you are paid for it</div>
-            <div class="step-desc">eSignature is built in. The time you spent sits against the document rather than being reconstructed on the last day of the month, and the positions you took come with you into the next matter.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="steps track-steps" data-track="company" style="display:none;">
-        <div class="step active" onclick="setStep('company',0)">
-          <div class="step-accent-bar"></div>
-          <div class="step-num">01</div>
-          <div class="step-body">
-            <div class="step-title">Their paper arrives</div>
-            <div class="step-desc">Forward it in from your inbox or drop it in. Midly opens the .docx with the other side&rsquo;s tracked changes intact, so every insertion and deletion is something you accept or reject rather than something you have to spot.</div>
-          </div>
-        </div>
-        <div class="step" onclick="setStep('company',1)">
-          <div class="step-accent-bar"></div>
-          <div class="step-num">02</div>
-          <div class="step-body">
-            <div class="step-title">You find out what actually changed</div>
-            <div class="step-desc">Every clause graded against the guardrails your business actually signs inside and anchored to the exact language, so the two changes that carry risk separate from the ninety-eight that do not.</div>
-          </div>
-        </div>
-        <div class="step" onclick="setStep('company',2)">
-          <div class="step-accent-bar"></div>
-          <div class="step-num">03</div>
-          <div class="step-body">
-            <div class="step-title">You mark it up in your voice</div>
-            <div class="step-desc">Your edits go back as tracked changes in your name, with the argument sitting next to the change, so the person in sales who wants to know why can read the reason instead of calling you.</div>
-          </div>
-        </div>
-        <div class="step" onclick="setStep('company',3)">
+        <div class="step" onclick="setStep(3)">
           <div class="step-accent-bar"></div>
           <div class="step-num">04</div>
           <div class="step-body">
@@ -2501,102 +2460,45 @@
       </div>
 
       <div class="how-visual" id="how-visual">
-        <div id="p-clients-0" class="step-visual-content" style="display:none;">
+        <!--
+          ONE PANEL PER STEP, and setStep swaps them.
+
+          There used to be a single static panel here headed "Deal Intake",
+          ending on "Generating MSA from your template...". Two things were
+          wrong with it. It never changed, so all four steps showed it and
+          clicking a step moved a highlight and nothing else, which reads as
+          broken. And it argued the opposite of the section above it: a form
+          for your own counterparty details generating your own MSA is the
+          outbound doc assembly story, on a page whose whole claim is that
+          their paper arrives and the reading is the product. A visitor who
+          looked at the picture instead of reading the words got the CLM
+          answer, which is the exact misread this page exists to prevent.
+
+          Every element below is something the product does. Do not add a
+          panel for a capability that does not ship.
+        -->
+        <div id="step-content-0" class="step-visual-content">
           <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-dim);margin-bottom:14px;">Incoming</div>
-          <div style="background:var(--surface2);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;"><div style="font-size:11px;color:var(--text-dim);margin-bottom:6px;">Matter</div><div style="font-size:13px;color:var(--text);line-height:1.5;">Northwind, Acme master services agreement</div></div>
-          <div style="background:var(--surface2);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;"><div style="font-size:11px;color:var(--text-dim);margin-bottom:6px;">Attachment</div><div style="font-size:13px;color:var(--text);line-height:1.5;">MSA Acme v4 (Acme markup).docx</div></div>
-          <div style="background:var(--surface2);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;"><div style="font-size:11px;color:var(--text-dim);margin-bottom:6px;">Tracked changes</div><div style="font-size:13px;color:var(--text);line-height:1.5;">100 insertions and deletions, read intact</div></div>
+          <div style="background:var(--surface2);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;">
+            <div style="font-size:11px;color:var(--text-dim);margin-bottom:6px;">From</div>
+            <div style="font-size:13px;color:var(--text);line-height:1.5;">counsel@acmecorp.com</div>
+          </div>
+          <div style="background:var(--surface2);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;">
+            <div style="font-size:11px;color:var(--text-dim);margin-bottom:6px;">Attachment</div>
+            <div style="font-size:13px;color:var(--text);line-height:1.5;">MSA Acme v4 (Acme markup).docx</div>
+          </div>
+          <div style="background:var(--surface2);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;">
+            <div style="font-size:11px;color:var(--text-dim);margin-bottom:6px;">Tracked changes</div>
+            <div style="font-size:13px;color:var(--text);line-height:1.5;">100 insertions and deletions, read intact</div>
+          </div>
           <div style="background:var(--accent-dim);border:1px solid rgba(200,240,65,0.2);border-radius:8px;padding:14px;display:flex;align-items:center;gap:12px;margin-top:14px;">
             <div style="width:8px;height:8px;background:var(--accent);border-radius:50%;flex-shrink:0;"></div>
-            <div style="font-size:13px;color:var(--accent);line-height:1.45;">Opens against the playbook you built from your own practice</div>
+            <div style="font-size:13px;color:var(--accent);line-height:1.45;">Open with their markup live, not flattened into clean text</div>
           </div>
         </div>
 
-        <div id="p-clients-1" class="step-visual-content" style="display:none;">
+        <div id="step-content-1" class="step-visual-content" style="display:none;">
           <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-dim);margin-bottom:14px;">Graded against your playbook</div>
-          <div style="background:var(--surface2);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;">
-            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
-              <div>
-                <div style="font-size:13px;color:var(--text);line-height:1.5;">Limitation of liability</div>
-                <div style="font-size:12px;color:var(--text-muted);margin-top:4px;line-height:1.5;">Cap cut from twelve months of fees to one</div>
-              </div>
-              <span class="hv-tag hv-tag-risk">Moves risk</span>
-            </div>
-          </div>
-          <div style="background:var(--surface2);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;">
-            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
-              <div>
-                <div style="font-size:13px;color:var(--text);line-height:1.5;">Indemnity</div>
-                <div style="font-size:12px;color:var(--text-muted);margin-top:4px;line-height:1.5;">Mutual quietly became one way</div>
-              </div>
-              <span class="hv-tag hv-tag-risk">Moves risk</span>
-            </div>
-          </div>
-          <div style="background:var(--surface2);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;">
-            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
-              <div>
-                <div style="font-size:13px;color:var(--text);line-height:1.5;">98 other changes</div>
-                <div style="font-size:12px;color:var(--text-muted);margin-top:4px;line-height:1.5;">Defined terms, cross references, wording</div>
-              </div>
-              <span class="hv-tag hv-tag-none">No risk change</span>
-            </div>
-          </div>
-          <div style="background:var(--accent-dim);border:1px solid rgba(200,240,65,0.2);border-radius:8px;padding:14px;display:flex;align-items:center;gap:12px;margin-top:14px;">
-            <div style="width:8px;height:8px;background:var(--accent);border-radius:50%;flex-shrink:0;"></div>
-            <div style="font-size:13px;color:var(--accent);line-height:1.45;">Two of a hundred need you. You bill for judgment, not for hunting.</div>
-          </div>
-        </div>
-
-        <div id="p-clients-2" class="step-visual-content" style="display:none;">
-          <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-dim);margin-bottom:14px;">Your markup</div>
-          <div style="background:var(--surface2);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;"><div style="font-size:11px;color:var(--text-dim);margin-bottom:6px;">Section 9.2, Limitation of liability</div><div style="font-size:13px;color:var(--text);line-height:1.5;">in no event shall aggregate liability exceed <span class="rd-delete hv-del">one (1) month</span><span class="hv-ins"> twelve (12) months</span> of fees paid</div></div>
-          <div style="background:var(--surface2);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;"><div style="font-size:11px;color:var(--text-dim);margin-bottom:6px;">Tracked as Patience Babajide-McCormick</div><div style="font-size:13px;color:var(--text);line-height:1.5;">Twelve months is where this has landed every time we have argued it. Happy to walk through why.</div></div>
-          <div style="background:var(--accent-dim);border:1px solid rgba(200,240,65,0.2);border-radius:8px;padding:14px;display:flex;align-items:center;gap:12px;margin-top:14px;">
-            <div style="width:8px;height:8px;background:var(--accent);border-radius:50%;flex-shrink:0;"></div>
-            <div style="font-size:13px;color:var(--accent);line-height:1.45;">Northwind can follow it in their portal without you writing an update</div>
-          </div>
-        </div>
-
-        <div id="p-clients-3" class="step-visual-content" style="display:none;">
-          <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-dim);margin-bottom:14px;">Closed, and kept</div>
-          <div style="background:var(--surface2);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;">
-            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
-              <div>
-                <div style="font-size:13px;color:var(--text);line-height:1.5;">Signed by both parties</div>
-                <div style="font-size:12px;color:var(--text-muted);margin-top:4px;line-height:1.5;">Northwind, Acme master services agreement</div>
-              </div>
-              <span class="hv-tag hv-tag-held">Executed</span>
-            </div>
-          </div>
-          <div style="background:var(--surface2);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;"><div style="font-size:11px;color:var(--text-dim);margin-bottom:6px;">Time captured</div><div style="font-size:13px;color:var(--text);line-height:1.5;">2.4 hours, against this document</div></div>
-          <div style="background:var(--surface2);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;">
-            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
-              <div>
-                <div style="font-size:13px;color:var(--text);line-height:1.5;">Liability cap at twelve months of fees</div>
-                <div style="font-size:12px;color:var(--text-muted);margin-top:4px;line-height:1.5;">Your position across three rounds</div>
-              </div>
-              <span class="hv-tag hv-tag-held">Held</span>
-            </div>
-          </div>
-          <div style="background:var(--accent-dim);border:1px solid rgba(200,240,65,0.2);border-radius:8px;padding:14px;display:flex;align-items:center;gap:12px;margin-top:14px;">
-            <div style="width:8px;height:8px;background:var(--accent);border-radius:50%;flex-shrink:0;"></div>
-            <div style="font-size:13px;color:var(--accent);line-height:1.45;">The next matter opens on what you already argued, not on nothing</div>
-          </div>
-        </div>
-
-        <div id="p-company-0" class="step-visual-content" style="display:none;">
-          <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-dim);margin-bottom:14px;">Incoming</div>
-          <div style="background:var(--surface2);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;"><div style="font-size:11px;color:var(--text-dim);margin-bottom:6px;">From</div><div style="font-size:13px;color:var(--text);line-height:1.5;">counsel@acmecorp.com</div></div>
-          <div style="background:var(--surface2);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;"><div style="font-size:11px;color:var(--text-dim);margin-bottom:6px;">Attachment</div><div style="font-size:13px;color:var(--text);line-height:1.5;">MSA Acme v4 (Acme markup).docx</div></div>
-          <div style="background:var(--surface2);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;"><div style="font-size:11px;color:var(--text-dim);margin-bottom:6px;">Tracked changes</div><div style="font-size:13px;color:var(--text);line-height:1.5;">100 insertions and deletions, read intact</div></div>
-          <div style="background:var(--accent-dim);border:1px solid rgba(200,240,65,0.2);border-radius:8px;padding:14px;display:flex;align-items:center;gap:12px;margin-top:14px;">
-            <div style="width:8px;height:8px;background:var(--accent);border-radius:50%;flex-shrink:0;"></div>
-            <div style="font-size:13px;color:var(--accent);line-height:1.45;">Opens with their markup live, not flattened into clean text</div>
-          </div>
-        </div>
-
-        <div id="p-company-1" class="step-visual-content" style="display:none;">
-          <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-dim);margin-bottom:14px;">Graded against your guardrails</div>
           <div style="background:var(--surface2);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;">
             <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
               <div>
@@ -2630,24 +2532,27 @@
           </div>
         </div>
 
-        <div id="p-company-2" class="step-visual-content" style="display:none;">
+        <div id="step-content-2" class="step-visual-content" style="display:none;">
           <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-dim);margin-bottom:14px;">Your markup</div>
-          <div style="background:var(--surface2);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;"><div style="font-size:11px;color:var(--text-dim);margin-bottom:6px;">Section 9.2, Limitation of liability</div><div style="font-size:13px;color:var(--text);line-height:1.5;">in no event shall aggregate liability exceed <span class="rd-delete hv-del">one (1) month</span><span class="hv-ins"> twelve (12) months</span> of fees paid</div></div>
-          <div style="background:var(--surface2);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;"><div style="font-size:11px;color:var(--text-dim);margin-bottom:6px;">Tracked as Patience Babajide-McCormick</div><div style="font-size:13px;color:var(--text);line-height:1.5;">Twelve months is where this has landed every time we have argued it. Happy to walk through why.</div></div>
+          <div style="background:var(--surface2);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;">
+            <div style="font-size:11px;color:var(--text-dim);margin-bottom:6px;">Section 9.2, Limitation of liability</div>
+            <div style="font-size:13px;color:var(--text);line-height:1.5;">in no event shall aggregate liability exceed <span class="rd-delete hv-del">one (1) month</span><span class="hv-ins"> twelve (12) months</span> of fees paid</div>
+          </div>
+          <div style="background:var(--surface2);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;">
+            <div style="font-size:11px;color:var(--text-dim);margin-bottom:6px;">Tracked as Patience Babajide-McCormick</div>
+            <div style="font-size:13px;color:var(--text);line-height:1.5;">Twelve months is where this has landed every time we have argued it. Happy to walk through why.</div>
+          </div>
           <div style="background:var(--accent-dim);border:1px solid rgba(200,240,65,0.2);border-radius:8px;padding:14px;display:flex;align-items:center;gap:12px;margin-top:14px;">
             <div style="width:8px;height:8px;background:var(--accent);border-radius:50%;flex-shrink:0;"></div>
-            <div style="font-size:13px;color:var(--accent);line-height:1.45;">The reason travels with the clause, so you explain it once</div>
+            <div style="font-size:13px;color:var(--accent);line-height:1.45;">Goes back as tracked changes in your name, with the argument attached to the clause</div>
           </div>
         </div>
 
-        <div id="p-company-3" class="step-visual-content" style="display:none;">
+        <div id="step-content-3" class="step-visual-content" style="display:none;">
           <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-dim);margin-bottom:14px;">Closed, and kept</div>
           <div style="background:var(--surface2);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;">
             <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
-              <div>
-                <div style="font-size:13px;color:var(--text);line-height:1.5;">Signed by both parties</div>
-                <div style="font-size:12px;color:var(--text-muted);margin-top:4px;line-height:1.5;">Acme master services agreement</div>
-              </div>
+              <div style="font-size:13px;color:var(--text);line-height:1.5;">Signed by both parties</div>
               <span class="hv-tag hv-tag-held">Executed</span>
             </div>
           </div>
@@ -2674,12 +2579,7 @@
             <div style="font-size:13px;color:var(--accent);line-height:1.45;">The next round opens on what you already decided, not on nothing</div>
           </div>
         </div>
-
       </div>
-    </div>
-
-    <div class="how-more" id="how-more" style="display:none;">
-      <a id="how-more-link" class="door-cta" href="/attorneys?src=home-how">See the full attorney workflow &rarr;</a>
     </div>
   </div>
 </section>
@@ -3379,51 +3279,6 @@
   html[data-theme="light"] .rd-ai-text { color: #4d7500; }
   html[data-theme="light"] .trial-badge { border-color: rgba(77,117,0,0.35); background: rgba(77,117,0,0.08); }
 
-  /* The track picker and the blank state it sits above. */
-  .track-picker { margin: 28px 0 20px; }
-  .track-prompt {
-    font-family: var(--font-display);
-    font-size: clamp(20px, 2.4vw, 26px);
-    font-weight: 650;
-    letter-spacing: -0.01em;
-    color: var(--text);
-    margin-bottom: 6px;
-  }
-  .track-note { font-size: 14px; line-height: 1.55; color: var(--text-muted); margin: 0 0 16px; max-width: 52ch; }
-  .track-buttons { display: flex; flex-wrap: wrap; gap: 12px; }
-  .track-btn {
-    font: inherit;
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--text);
-    background: var(--surface);
-    border: 2px solid var(--border);
-    border-radius: 100px;
-    padding: 12px 24px;
-    cursor: pointer;
-    transition: border-color .15s, background .15s, color .15s;
-  }
-  .track-btn:hover { border-color: var(--border-hover); }
-  .track-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-  .track-btn.active { border-color: var(--accent); background: var(--accent-dim); color: var(--accent); }
-  [data-theme="light"] .track-btn.active { color: #3F5A07; }
-
-  .how-blank {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 32px;
-    min-height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-size: 15px;
-    color: var(--text-dim);
-  }
-
-  .how-more { margin-top: 24px; }
-
   /* How It Works step panels. The red and green here are CLASSES, not inline
      styles, so the light theme below can darken them. #f87171 and #4ade80 are
      picked for a near-black canvas and go washed out on white, which is why
@@ -3737,46 +3592,18 @@
 
   if (themeToggleMobile) themeToggleMobile.addEventListener('click', applyThemeToggle);
 
-  var currentTrack = null;
-
-  // Nothing is shown until a track is picked, so every function below has to
-  // tolerate being called before that has happened.
-  function setTrack(t) {
-    currentTrack = t;
-    document.querySelectorAll('.track-btn').forEach(function (b) {
-      var on = b.getAttribute('data-track') === t;
-      b.classList.toggle('active', on);
-      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+  function setStep(n) {
+    document.querySelectorAll('.step').forEach((s,i) => {
+      s.classList.toggle('active', i === n);
     });
-    document.querySelectorAll('.track-steps').forEach(function (el) {
-      el.style.display = (el.getAttribute('data-track') === t) ? 'flex' : 'none';
-    });
-    var blank = document.getElementById('how-blank');
-    if (blank) blank.style.display = 'none';
-    var grid = document.getElementById('how-grid');
-    if (grid) grid.style.display = 'grid';
-    var more = document.getElementById('how-more');
-    var link = document.getElementById('how-more-link');
-    if (link) {
-      var clients = (t === 'clients');
-      link.href = clients ? '/attorneys?src=home-how' : '/teams?src=home-how';
-      link.textContent = clients ? 'See the full attorney workflow \u2192' : 'See the full in-house workflow \u2192';
+    // Swap the panel too. This used to only move the highlight, so every step
+    // showed step one's picture and clicking looked broken. Guarded per panel
+    // so a step whose visual has not been written yet cannot throw and leave
+    // the highlight on a step showing somebody else's content.
+    for (var i = 0; i < 4; i++) {
+      var el = document.getElementById('step-content-' + i);
+      if (el) el.style.display = (i === n) ? 'block' : 'none';
     }
-    if (more) more.style.display = 'block';
-    setStep(t, 0);
-  }
-
-  function setStep(t, n) {
-    if (!t) return;
-    var steps = document.querySelectorAll('.track-steps[data-track="' + t + '"] .step');
-    steps.forEach(function (s, i) { s.classList.toggle('active', i === n); });
-    // Every panel is hidden and exactly one shown, rather than toggling only
-    // the pair involved. Switching track leaves the previous track's panel
-    // visible otherwise, which showed one role's steps beside the other
-    // role's picture.
-    document.querySelectorAll('.step-visual-content').forEach(function (el) { el.style.display = 'none'; });
-    var panel = document.getElementById('p-' + t + '-' + n);
-    if (panel) panel.style.display = 'block';
   }
 
   var isAnnual = false;
