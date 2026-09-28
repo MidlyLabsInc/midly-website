@@ -775,9 +775,12 @@
   }
 
   /* ── FEATURES ── */
+  /* Two up, because there are four cards. At three columns the last row was
+     a ragged remainder, and the section is four claims rather than a feature
+     count, so each one gets half the width instead of a third. */
   .features-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1px;
     background: var(--border);
     border: 1px solid var(--border);
@@ -2457,25 +2460,123 @@
       </div>
 
       <div class="how-visual" id="how-visual">
+        <!--
+          ONE PANEL PER STEP, and setStep swaps them.
+
+          There used to be a single static panel here headed "Deal Intake",
+          ending on "Generating MSA from your template...". Two things were
+          wrong with it. It never changed, so all four steps showed it and
+          clicking a step moved a highlight and nothing else, which reads as
+          broken. And it argued the opposite of the section above it: a form
+          for your own counterparty details generating your own MSA is the
+          outbound doc assembly story, on a page whose whole claim is that
+          their paper arrives and the reading is the product. A visitor who
+          looked at the picture instead of reading the words got the CLM
+          answer, which is the exact misread this page exists to prevent.
+
+          Every element below is something the product does. Do not add a
+          panel for a capability that does not ship.
+        -->
         <div id="step-content-0" class="step-visual-content">
-          <div style="margin-bottom:20px;">
-            <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-dim);margin-bottom:12px;">Deal Intake</div>
-            <div style="background:var(--surface2);border-radius:8px;padding:16px;border:1px solid var(--border);margin-bottom:10px;">
-              <div style="font-size:11px;color:var(--text-dim);margin-bottom:6px;">Counterparty Name</div>
-              <div style="background:var(--bg);border-radius:5px;padding:8px 12px;font-size:13px;color:var(--text);border:1px solid var(--border);">Acme Corporation</div>
-            </div>
-            <div style="background:var(--surface2);border-radius:8px;padding:16px;border:1px solid var(--border);margin-bottom:10px;">
-              <div style="font-size:11px;color:var(--text-dim);margin-bottom:6px;">Contract Type</div>
-              <div style="background:var(--bg);border-radius:5px;padding:8px 12px;font-size:13px;color:var(--text);border:1px solid var(--border);">Master Services Agreement</div>
-            </div>
-            <div style="background:var(--surface2);border-radius:8px;padding:16px;border:1px solid var(--border);">
-              <div style="font-size:11px;color:var(--text-dim);margin-bottom:6px;">Contract Value</div>
-              <div style="background:var(--bg);border-radius:5px;padding:8px 12px;font-size:13px;color:var(--text);border:1px solid var(--border);">$120,000 / year</div>
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-dim);margin-bottom:14px;">Incoming</div>
+          <div style="background:var(--surface2);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;">
+            <div style="font-size:11px;color:var(--text-dim);margin-bottom:6px;">From</div>
+            <div style="font-size:13px;color:var(--text);line-height:1.5;">counsel@acmecorp.com</div>
+          </div>
+          <div style="background:var(--surface2);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;">
+            <div style="font-size:11px;color:var(--text-dim);margin-bottom:6px;">Attachment</div>
+            <div style="font-size:13px;color:var(--text);line-height:1.5;">MSA Acme v4 (Acme markup).docx</div>
+          </div>
+          <div style="background:var(--surface2);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;">
+            <div style="font-size:11px;color:var(--text-dim);margin-bottom:6px;">Tracked changes</div>
+            <div style="font-size:13px;color:var(--text);line-height:1.5;">100 insertions and deletions, read intact</div>
+          </div>
+          <div style="background:var(--accent-dim);border:1px solid rgba(200,240,65,0.2);border-radius:8px;padding:14px;display:flex;align-items:center;gap:12px;margin-top:14px;">
+            <div style="width:8px;height:8px;background:var(--accent);border-radius:50%;flex-shrink:0;"></div>
+            <div style="font-size:13px;color:var(--accent);line-height:1.45;">Open with their markup live, not flattened into clean text</div>
+          </div>
+        </div>
+
+        <div id="step-content-1" class="step-visual-content" style="display:none;">
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-dim);margin-bottom:14px;">Graded against your playbook</div>
+          <div style="background:var(--surface2);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
+              <div>
+                <div style="font-size:13px;color:var(--text);line-height:1.5;">Limitation of liability</div>
+                <div style="font-size:12px;color:var(--text-muted);margin-top:4px;line-height:1.5;">Cap cut from twelve months of fees to one</div>
+              </div>
+              <span class="hv-tag hv-tag-risk">Moves risk</span>
             </div>
           </div>
-          <div style="background:var(--accent-dim);border:1px solid rgba(200,240,65,0.2);border-radius:8px;padding:14px;display:flex;align-items:center;gap:12px;">
+          <div style="background:var(--surface2);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
+              <div>
+                <div style="font-size:13px;color:var(--text);line-height:1.5;">Indemnity</div>
+                <div style="font-size:12px;color:var(--text-muted);margin-top:4px;line-height:1.5;">Mutual quietly became one way</div>
+              </div>
+              <span class="hv-tag hv-tag-risk">Moves risk</span>
+            </div>
+          </div>
+          <div style="background:var(--surface2);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
+              <div>
+                <div style="font-size:13px;color:var(--text);line-height:1.5;">98 other changes</div>
+                <div style="font-size:12px;color:var(--text-muted);margin-top:4px;line-height:1.5;">Defined terms, cross references, wording</div>
+              </div>
+              <span class="hv-tag hv-tag-none">No risk change</span>
+            </div>
+          </div>
+          <div style="background:var(--accent-dim);border:1px solid rgba(200,240,65,0.2);border-radius:8px;padding:14px;display:flex;align-items:center;gap:12px;margin-top:14px;">
             <div style="width:8px;height:8px;background:var(--accent);border-radius:50%;flex-shrink:0;"></div>
-            <div style="font-size:13px;color:var(--accent);">Generating MSA from your template...</div>
+            <div style="font-size:13px;color:var(--accent);line-height:1.45;">Two of a hundred need you. You are told which two.</div>
+          </div>
+        </div>
+
+        <div id="step-content-2" class="step-visual-content" style="display:none;">
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-dim);margin-bottom:14px;">Your markup</div>
+          <div style="background:var(--surface2);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;">
+            <div style="font-size:11px;color:var(--text-dim);margin-bottom:6px;">Section 9.2, Limitation of liability</div>
+            <div style="font-size:13px;color:var(--text);line-height:1.5;">in no event shall aggregate liability exceed <span class="rd-delete hv-del">one (1) month</span><span class="hv-ins"> twelve (12) months</span> of fees paid</div>
+          </div>
+          <div style="background:var(--surface2);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;">
+            <div style="font-size:11px;color:var(--text-dim);margin-bottom:6px;">Tracked as Patience Babajide-McCormick</div>
+            <div style="font-size:13px;color:var(--text);line-height:1.5;">Twelve months is where this has landed every time we have argued it. Happy to walk through why.</div>
+          </div>
+          <div style="background:var(--accent-dim);border:1px solid rgba(200,240,65,0.2);border-radius:8px;padding:14px;display:flex;align-items:center;gap:12px;margin-top:14px;">
+            <div style="width:8px;height:8px;background:var(--accent);border-radius:50%;flex-shrink:0;"></div>
+            <div style="font-size:13px;color:var(--accent);line-height:1.45;">Goes back as tracked changes in your name, with the argument attached to the clause</div>
+          </div>
+        </div>
+
+        <div id="step-content-3" class="step-visual-content" style="display:none;">
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-dim);margin-bottom:14px;">Closed, and kept</div>
+          <div style="background:var(--surface2);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
+              <div style="font-size:13px;color:var(--text);line-height:1.5;">Signed by both parties</div>
+              <span class="hv-tag hv-tag-held">Executed</span>
+            </div>
+          </div>
+          <div style="background:var(--surface2);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
+              <div>
+                <div style="font-size:13px;color:var(--text);line-height:1.5;">Liability cap at twelve months of fees</div>
+                <div style="font-size:12px;color:var(--text-muted);margin-top:4px;line-height:1.5;">Your position across three rounds</div>
+              </div>
+              <span class="hv-tag hv-tag-held">Held</span>
+            </div>
+          </div>
+          <div style="background:var(--surface2);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
+              <div>
+                <div style="font-size:13px;color:var(--text);line-height:1.5;">Indemnity stays mutual</div>
+                <div style="font-size:12px;color:var(--text-muted);margin-top:4px;line-height:1.5;">Your position across three rounds</div>
+              </div>
+              <span class="hv-tag hv-tag-held">Held</span>
+            </div>
+          </div>
+          <div style="background:var(--accent-dim);border:1px solid rgba(200,240,65,0.2);border-radius:8px;padding:14px;display:flex;align-items:center;gap:12px;margin-top:14px;">
+            <div style="width:8px;height:8px;background:var(--accent);border-radius:50%;flex-shrink:0;"></div>
+            <div style="font-size:13px;color:var(--accent);line-height:1.45;">The next round opens on what you already decided, not on nothing</div>
           </div>
         </div>
       </div>
@@ -2518,13 +2619,6 @@
         </div>
         <div class="feature-title">Grounded, or it says nothing</div>
         <div class="feature-desc">No hallucinated case law and no invented citations. If Midly cannot point to the language in your document, it does not make the claim.</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg viewBox="0 0 20 20"><rect x="3" y="3" width="14" height="14" rx="2"/><path d="M7 10h6M10 7v6" stroke-linecap="round"/></svg>
-        </div>
-        <div class="feature-title">eSignature Built In</div>
-        <div class="feature-desc">No third-party integrations needed. Send for signature, track status, and auto-archive completed contracts, all inside Midly.</div>
       </div>
     </div>
   </div>
@@ -3185,17 +3279,33 @@
   html[data-theme="light"] .rd-ai-text { color: #4d7500; }
   html[data-theme="light"] .trial-badge { border-color: rgba(77,117,0,0.35); background: rgba(77,117,0,0.08); }
 
+  /* How It Works step panels. The red and green here are CLASSES, not inline
+     styles, so the light theme below can darken them. #f87171 and #4ade80 are
+     picked for a near-black canvas and go washed out on white, which is why
+     .rd-delete and .rd-insert already carry light overrides. An inline color
+     cannot be overridden by a theme rule, so anything that needs to change
+     between themes has to be a class. */
+  .hv-tag { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; border-radius: 100px; padding: 3px 9px; white-space: nowrap; }
+  .hv-tag-risk { color: #f87171; background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.25); }
+  .hv-tag-none { color: var(--text-dim); background: var(--bg); border: 1px solid var(--border); }
+  .hv-tag-held { color: #4ade80; background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.25); }
+  .hv-ins { background: rgba(34,197,94,0.15); color: #4ade80; padding: 1px 4px; border-radius: 3px; }
+  .hv-del { font-size: 13px; }
+
   /* Status colours picked for a dark canvas wash out on white */
   html[data-theme="light"] .ws-status-signed,
   html[data-theme="light"] .ws-stat-green,
   html[data-theme="light"] .rd-count-ins,
   html[data-theme="light"] .rd-insert,
   html[data-theme="light"] .rd-clause-accepted .rd-insert,
-  html[data-theme="light"] .rd-ins-text { color: #146c35 !important; }
+  html[data-theme="light"] .rd-ins-text,
+  html[data-theme="light"] .hv-tag-held,
+  html[data-theme="light"] .hv-ins { color: #146c35 !important; }
   html[data-theme="light"] .ws-status-review,
   html[data-theme="light"] .rd-badge-changes { color: #96530a !important; }
   html[data-theme="light"] .rd-count-del,
-  html[data-theme="light"] .rd-delete { color: #b3261e !important; }
+  html[data-theme="light"] .rd-delete,
+  html[data-theme="light"] .hv-tag-risk { color: #b3261e !important; }
 
   /* Accent is a deep green in light mode, so accent-filled controls need
      light labels — the base CSS assumes near-black on bright lime. */
@@ -3486,6 +3596,14 @@
     document.querySelectorAll('.step').forEach((s,i) => {
       s.classList.toggle('active', i === n);
     });
+    // Swap the panel too. This used to only move the highlight, so every step
+    // showed step one's picture and clicking looked broken. Guarded per panel
+    // so a step whose visual has not been written yet cannot throw and leave
+    // the highlight on a step showing somebody else's content.
+    for (var i = 0; i < 4; i++) {
+      var el = document.getElementById('step-content-' + i);
+      if (el) el.style.display = (i === n) ? 'block' : 'none';
+    }
   }
 
   var isAnnual = false;
