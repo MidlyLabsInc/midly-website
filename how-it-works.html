@@ -446,31 +446,131 @@
   /* ── DOT NAV ── */
   /* Track picker. The page shows nothing below the hero until one is chosen,
      which is the point: it used to walk a visitor through a workflow written
-     for somebody else before asking who they were. */
-  .track-picker { margin: 34px 0 8px; }
+     for somebody else before asking who they were.
+
+     These are cards rather than buttons, and they are the only thing on the
+     screen to act on, so they are allowed to ask for attention. The highlight
+     alternates between them on a loop until one is hovered or picked, which
+     is what tells a visitor the choice is theirs to make rather than a label
+     on something already decided. */
+  /* The lime accent is a dark-canvas colour. In light mode the theme swaps it
+     for a deep green (#4d7500), so the card surface, the glow and the shadow
+     are all declared as tokens here and overridden below. A hardcoded
+     rgba(200,240,65,...) simply disappears on white, which is the same trap
+     the redline colours fell into on the homepage. */
+  .track-picker {
+    margin: 38px 0 8px;
+    --track-card-bg: rgba(255,255,255,0.035);
+    --track-glow-border: rgba(200,240,65,0.55);
+    --track-glow-bg: rgba(200,240,65,0.08);
+    --track-shadow: rgba(0,0,0,0.42);
+  }
+  [data-theme="light"] .track-picker {
+    --track-card-bg: rgba(0,0,0,0.018);
+    --track-glow-border: rgba(77,117,0,0.55);
+    --track-glow-bg: rgba(77,117,0,0.07);
+    --track-shadow: rgba(0,0,0,0.14);
+  }
   .track-prompt {
-    font-size: clamp(19px, 2.2vw, 24px);
+    font-size: clamp(19px, 2.2vw, 25px);
     font-weight: 650;
     letter-spacing: -0.01em;
     color: var(--text);
-    margin-bottom: 14px;
+    margin-bottom: 22px;
+    text-align: center;
   }
-  .track-buttons { display: flex; flex-wrap: wrap; gap: 12px; }
-  .track-btn {
+  .track-cards {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 20px;
+    perspective: 1400px;
+  }
+  .track-card {
+    position: relative;
+    width: 320px;
+    height: 202px;
+    padding: 0;
+    border: 0;
+    background: none;
     font: inherit;
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--text);
-    background: rgba(255,255,255,0.04);
-    border: 2px solid var(--border);
-    border-radius: 100px;
-    padding: 12px 24px;
+    color: inherit;
     cursor: pointer;
-    transition: border-color .15s, background .15s, color .15s;
+    transform-style: preserve-3d;
+    transition: transform .62s cubic-bezier(.2,.75,.2,1), opacity .35s ease;
   }
-  .track-btn:hover { border-color: rgba(200,240,65,0.45); }
-  .track-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-  .track-btn.active { border-color: var(--accent); background: rgba(200,240,65,0.12); color: var(--accent); }
+  /* Both faces are painted; the back is pre-rotated and hidden until the card
+     turns. backface-visibility is what keeps the front from ghosting through
+     the back mid-turn, and it needs the webkit prefix for older Safari. */
+  .track-face {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 26px 24px;
+    border: 2px solid var(--border);
+    border-radius: 18px;
+    background: var(--track-card-bg);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transition: border-color .3s ease, background .3s ease, box-shadow .3s ease;
+  }
+  .track-face-back {
+    transform: rotateY(180deg);
+    border-color: var(--accent);
+    background: var(--accent-dim);
+  }
+  .track-card-title {
+    font-size: 23px;
+    font-weight: 680;
+    letter-spacing: -0.015em;
+    color: var(--text);
+    line-height: 1.2;
+  }
+  .track-face-back .track-card-title { color: var(--accent); }
+  .track-card-sub {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-muted);
+    max-width: 24ch;
+  }
+  .track-card:hover .track-face-front,
+  .track-card:focus-visible .track-face-front {
+    border-color: var(--accent);
+    background: var(--track-glow-bg);
+    box-shadow: 0 20px 48px var(--track-shadow);
+  }
+  .track-card:focus-visible { outline: none; }
+  .track-card:focus-visible .track-face-front { outline: 2px solid var(--accent); outline-offset: 4px; }
+  .track-card:hover { transform: translateY(-4px); }
+  .track-card.flipped,
+  .track-card.flipped:hover { transform: rotateY(180deg); }
+  .track-card.dim { opacity: 0.4; }
+
+  @keyframes trackBeat {
+    0%, 40%, 100% { border-color: var(--border); background: var(--track-card-bg); box-shadow: none; }
+    14%, 26%      { border-color: var(--track-glow-border); background: var(--track-glow-bg); box-shadow: 0 14px 34px var(--track-shadow); }
+  }
+  /* One, then the other, then a pause, forever, until a choice is made.
+     Offsetting the second card by half the cycle is what makes them take
+     turns rather than pulse together. */
+  .track-picker:not(.chosen) .track-card:nth-child(1) .track-face-front { animation: trackBeat 4.6s ease-in-out infinite; }
+  .track-picker:not(.chosen) .track-card:nth-child(2) .track-face-front { animation: trackBeat 4.6s ease-in-out 2.3s infinite; }
+  .track-cards:hover .track-face-front { animation-play-state: paused; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .track-face-front { animation: none !important; }
+    .track-card { transition: none; }
+    .track-card:hover { transform: none; }
+  }
+
+  @media (max-width: 560px) {
+    .track-card { width: 100%; max-width: 340px; height: 160px; }
+  }
 
   #dot-nav {
     position: fixed;
@@ -1211,11 +1311,29 @@
       <h1 class="hero-title">Their paper lands on you.<br><em>Here is what happens next.</em></h1>
       <p class="hero-sub">Six steps, one document, and nothing that asks you to leave it. The work is the same shape whoever you are. What happens at the end is not, so say which one you are.</p>
 
-      <div class="track-picker">
+      <div class="track-picker" id="track-picker">
         <div class="track-prompt">Who are you reading for?</div>
-        <div class="track-buttons">
-          <button type="button" class="track-btn" data-pick="clients" aria-pressed="false" onclick="setTrack('clients')">Clients</button>
-          <button type="button" class="track-btn" data-pick="company" aria-pressed="false" onclick="setTrack('company')">My own company</button>
+        <div class="track-cards">
+          <button type="button" class="track-card" data-pick="clients" aria-pressed="false" onclick="setTrack('clients')">
+            <span class="track-face track-face-front">
+              <span class="track-card-title">Clients</span>
+              <span class="track-card-sub">Outside counsel, a firm, or my own practice</span>
+            </span>
+            <span class="track-face track-face-back" aria-hidden="true">
+              <span class="track-card-title">Reading for clients</span>
+              <span class="track-card-sub">Your six steps are below</span>
+            </span>
+          </button>
+          <button type="button" class="track-card" data-pick="company" aria-pressed="false" onclick="setTrack('company')">
+            <span class="track-face track-face-front">
+              <span class="track-card-title">My own company</span>
+              <span class="track-card-sub">In&nbsp;house, the one lawyer, or a small legal team</span>
+            </span>
+            <span class="track-face track-face-back" aria-hidden="true">
+              <span class="track-card-title">Reading for my own company</span>
+              <span class="track-card-sub">Your six steps are below</span>
+            </span>
+          </button>
         </div>
       </div>
 
@@ -1694,9 +1812,13 @@
   // a hidden section simply never intersects, and starts reporting normally
   // the moment it is shown, so nothing has to be re-registered here.
   function setTrack(t) {
-    document.querySelectorAll('.track-btn').forEach(function (b) {
+    // Stops the alternating highlight for good; the choice has been made.
+    var picker = document.getElementById('track-picker');
+    if (picker) picker.classList.add('chosen');
+    document.querySelectorAll('.track-card').forEach(function (b) {
       var on = b.getAttribute('data-pick') === t;
-      b.classList.toggle('active', on);
+      b.classList.toggle('flipped', on);
+      b.classList.toggle('dim', !on);
       b.setAttribute('aria-pressed', on ? 'true' : 'false');
     });
     // Both variants ship in the HTML so a crawler sees each one. Only the
