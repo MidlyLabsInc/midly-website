@@ -3054,25 +3054,48 @@
     <!-- CARDS -->
     <div class="pricing-grid" style="max-width:1200px;margin:0 auto;">
 
-      <!-- Free -->
-      <div class="pricing-card" style="position:relative;">
-        <div class="pricing-tier">Free</div>
-        <div style="font-size:12px;color:var(--text-dim);margin-bottom:16px;">The on-ramp. Draft real contracts and see the AI work before you pay.</div>
-        <div class="pricing-price" style="align-items:flex-end;margin-bottom:4px;">
-          <span class="pricing-amount">$0</span>
-          <span class="pricing-period">/mo</span>
+      <!-- Free, with the AI Review add-on directly beneath it, because that
+           is exactly who the add-on is for: every paid plan already includes
+           it. Nested inside one grid cell rather than placed with
+           grid-column:1. As a sibling it landed in grid row two, whose top is
+           set by the tallest card in row one, so it sat most of a screen
+           below the plan it belongs to. gap matches .pricing-grid's 20px. -->
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <div class="pricing-card" style="position:relative;">
+          <div class="pricing-tier">Free</div>
+          <div style="font-size:12px;color:var(--text-dim);margin-bottom:16px;">The on-ramp. Draft real contracts and see the AI work before you pay.</div>
+          <div class="pricing-price" style="align-items:flex-end;margin-bottom:4px;">
+            <span class="pricing-amount">$0</span>
+            <span class="pricing-period">/mo</span>
+          </div>
+          <div style="font-size:12px;color:var(--text-dim);margin-bottom:20px;min-height:18px;">No credit card required</div>
+          <ul class="pricing-features">
+            <li><span class="pricing-check"><svg viewBox="0 0 8 8"><path d="M1 4l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Contract editor, templates, and inputs</li>
+            <li><span class="pricing-check"><svg viewBox="0 0 8 8"><path d="M1 4l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>5 AI contract reviews per month</li>
+            <li><span class="pricing-check"><svg viewBox="0 0 8 8"><path d="M1 4l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>30 Ask Midly questions per month</li>
+            <li><span class="pricing-check"><svg viewBox="0 0 8 8"><path d="M1 4l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Workspace playbook</li>
+            <li><span class="pricing-check"><svg viewBox="0 0 8 8"><path d="M1 4l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Up to 3 active engagements, 1 user</li>
+            <li><span class="pricing-check"><svg viewBox="0 0 8 8"><path d="M1 4l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Preview of Compare (unlocks on a paid plan)</li>
+          </ul>
+          <a href="https://app.midly.ai/sign-up" class="pricing-cta-ghost">Try Midly free</a>
+          <p style="font-size:12px;color:var(--text-dim);margin-top:12px;text-align:center;">By signing up, you agree to our <a href="/terms" style="color:var(--text-dim);text-decoration:underline;">Terms</a> &amp; <a href="/privacy" style="color:var(--text-dim);text-decoration:underline;">Privacy Notice</a>.</p>
         </div>
-        <div style="font-size:12px;color:var(--text-dim);margin-bottom:20px;min-height:18px;">No credit card required</div>
-        <ul class="pricing-features">
-          <li><span class="pricing-check"><svg viewBox="0 0 8 8"><path d="M1 4l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Contract editor, templates, and inputs</li>
-          <li><span class="pricing-check"><svg viewBox="0 0 8 8"><path d="M1 4l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>5 AI contract reviews per month</li>
-          <li><span class="pricing-check"><svg viewBox="0 0 8 8"><path d="M1 4l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>30 Ask Midly questions per month</li>
-          <li><span class="pricing-check"><svg viewBox="0 0 8 8"><path d="M1 4l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Workspace playbook</li>
-          <li><span class="pricing-check"><svg viewBox="0 0 8 8"><path d="M1 4l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Up to 3 active engagements, 1 user</li>
-          <li><span class="pricing-check"><svg viewBox="0 0 8 8"><path d="M1 4l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Preview of Compare (unlocks on a paid plan)</li>
-        </ul>
-        <a href="https://app.midly.ai/sign-up" class="pricing-cta-ghost">Try Midly free</a>
-        <p style="font-size:12px;color:var(--text-dim);margin-top:12px;text-align:center;">By signing up, you agree to our <a href="/terms" style="color:var(--text-dim);text-decoration:underline;">Terms</a> &amp; <a href="/privacy" style="color:var(--text-dim);text-decoration:underline;">Privacy Notice</a>.</p>
+
+          <div class="pricing-card" style="position:relative;">
+          <div class="pricing-tier">Add-on &middot; AI Review &amp; Tailor</div>
+          <div style="font-size:12px;color:var(--text-dim);margin-bottom:16px;">For Free workspaces. Team, Outside Counsel and Enterprise already include it.</div>
+          <div class="pricing-price" style="align-items:flex-end;margin-bottom:4px;">
+            <span class="pricing-amount">+$25</span>
+            <span class="pricing-period">/workspace/mo</span>
+          </div>
+          <div style="font-size:12px;color:var(--text-dim);margin-bottom:20px;min-height:18px;">One flat price for the whole workspace, not per seat</div>
+          <ul class="pricing-features">
+            <li><span class="pricing-check"><svg viewBox="0 0 8 8"><path d="M1 4l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Unlimited AI contract reviews</li>
+            <li><span class="pricing-check"><svg viewBox="0 0 8 8"><path d="M1 4l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>AI Insights on every document</li>
+            <li><span class="pricing-check"><svg viewBox="0 0 8 8"><path d="M1 4l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Unlimited Ask Midly, plus Tailor</li>
+          </ul>
+          <p style="font-size:12px;color:var(--text-dim);margin-top:12px;text-align:center;">Add it anytime from Settings &rarr; Billing.</p>
+          </div>
       </div>
 
       <!-- Team -->
@@ -3143,23 +3166,6 @@
         <a href="https://calendly.com/patience-midly/midly-demo" class="pricing-cta-ghost">Book a Demo</a>
       </div>
     
-        <!-- AI Review & Tailor add-on. Sits under Free because that is who it
-             is for: Team, Counsel and Enterprise already include it. -->
-        <div class="pricing-card" style="position:relative;grid-column:1;">
-          <div class="pricing-tier">Add-on &middot; AI Review &amp; Tailor</div>
-          <div style="font-size:12px;color:var(--text-dim);margin-bottom:16px;">For Free workspaces. Team, Outside Counsel and Enterprise already include it.</div>
-          <div class="pricing-price" style="align-items:flex-end;margin-bottom:4px;">
-            <span class="pricing-amount">+$25</span>
-            <span class="pricing-period">/workspace/mo</span>
-          </div>
-          <div style="font-size:12px;color:var(--text-dim);margin-bottom:20px;min-height:18px;">One flat price for the whole workspace, not per seat</div>
-          <ul class="pricing-features">
-            <li><span class="pricing-check"><svg viewBox="0 0 8 8"><path d="M1 4l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Unlimited AI contract reviews</li>
-            <li><span class="pricing-check"><svg viewBox="0 0 8 8"><path d="M1 4l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>AI Insights on every document</li>
-            <li><span class="pricing-check"><svg viewBox="0 0 8 8"><path d="M1 4l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Unlimited Ask Midly, plus Tailor</li>
-          </ul>
-          <p style="font-size:12px;color:var(--text-dim);margin-top:12px;text-align:center;">Add it anytime from Settings &rarr; Billing.</p>
-        </div>
       </div>
 
 
