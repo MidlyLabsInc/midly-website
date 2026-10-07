@@ -289,6 +289,14 @@
     {
       "source": "/vs-docusign",
       "destination": "/vs-docusign.html"
+    },
+    {
+      "source": "/blog/teardown-datadog-renewal-window",
+      "destination": "/blog/teardown-datadog-renewal-window.html"
+    },
+    {
+      "source": "/blog/what-a-returned-redline-hides",
+      "destination": "/blog/what-a-returned-redline-hides.html"
     }
   ]
 }
