@@ -157,3 +157,51 @@
     }
   }
 })();
+
+/* Carry the campaign across the hop to the app.
+ *
+ * An ad lands here, on midly.ai, and the thing we need to measure happens
+ * over on app.midly.ai. The app captures attribution in middleware, but only
+ * on /sign-up, and every CTA on this site is a hardcoded
+ * app.midly.ai/sign-up?plan=... with no campaign on it. So the hop dropped
+ * utm_source and utm_campaign, every paid signup arrived anonymous, and the
+ * question the spend exists to answer, which message an attorney clicked,
+ * could not be answered afterwards.
+ *
+ * Copies only the campaign keys, never arbitrary query parameters, so a
+ * crafted link cannot push anything else onto an app URL. Existing params on
+ * the CTA, notably plan, are left alone: the ad decides the campaign, the page
+ * decides the plan, and neither should overwrite the other.
+ */
+(function () {
+  var KEYS = [
+    "utm_source",
+    "utm_medium",
+    "utm_campaign",
+    "utm_content",
+    "utm_term",
+    "li_fat_id",
+    "gclid"
+  ];
+  var here = new URLSearchParams(location.search);
+  var carry = [];
+  KEYS.forEach(function (k) {
+    var v = here.get(k);
+    if (v) carry.push([k, v]);
+  });
+  if (carry.length === 0) return;
+
+  var links = document.querySelectorAll('a[href*="app.midly.ai"]');
+  Array.prototype.forEach.call(links, function (a) {
+    var url;
+    try {
+      url = new URL(a.href);
+    } catch (e) {
+      return;
+    }
+    carry.forEach(function (pair) {
+      if (!url.searchParams.has(pair[0])) url.searchParams.set(pair[0], pair[1]);
+    });
+    a.href = url.toString();
+  });
+})();
