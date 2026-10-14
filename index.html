@@ -1479,6 +1479,27 @@
     color: var(--text-muted);
   }
 
+  /* The economics line.
+     "It cuts my own invoice" is the first objection an hourly attorney
+     raises about review software, and they raise it before any feature has
+     landed. The page had no answer to it. It is answered here, in her own
+     voice with her own numbers, because the answer is only worth anything
+     coming from somebody who actually bills.
+     Deliberately NOT italic like the quote above it. The quote is why she
+     built it; this is what it did to her practice, and a reader skimming
+     should be able to tell those two apart without reading both. */
+  .founder-strip-economics {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--text-muted);
+    margin: 0 0 12px;
+    padding-left: 14px;
+    border-left: 2px solid var(--accent);
+    text-align: left;
+  }
+
+  .founder-strip-economics strong { color: var(--text); font-weight: 650; }
+
   .founder-strip-name { font-weight: 700; color: var(--text); }
   .founder-strip-dot { color: var(--text-dim); }
 
@@ -2377,6 +2398,7 @@
       >
       <div class="founder-strip-body">
         <p class="founder-strip-quote">&ldquo;I have been a commercial attorney for thirteen years and I still practice, which means I am still the one reading the other side&rsquo;s paper. I built Midly for that job, finding the few changes that actually carry risk in a markup full of ones that do not. I run my own client work through it.&rdquo;</p>
+        <p class="founder-strip-economics">Work I used to bill at <strong>ten hours I now bill at two and a half</strong>. My judgment did not change, so what I changed is my rate. The client still sees a smaller bill, and the same week holds more clients.</p>
         <div class="founder-strip-byline">
           <span class="founder-strip-name">Patience Babajide, Esq.</span>
           <span class="founder-strip-dot">&middot;</span>
@@ -2655,6 +2677,120 @@
         <div class="feature-title">Your workspace has its own address</div>
         <div class="feature-desc">Forward the other side&rsquo;s draft from wherever it landed and it is open and read before you would have finished saving it to a folder. Their tracked changes arrive intact, not flattened.</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- AFTER SIGNATURE: REPOSITORY INTELLIGENCE
+     The page used to end the story at signature, which is the exact point
+     where the product stops resembling everything else on the market, and
+     the word "repository" appeared nowhere a visitor could read it. The
+     capability shipped; only people who sat through a live demo knew it was
+     there. Every demo lands on the same reaction, which is that an
+     agreement gets negotiated for weeks and then filed, and nobody can say
+     what is in it again until something has gone wrong.
+
+     EVERY CLAIM BELOW SHIPS, and the wording is deliberately close to the
+     code so it stays checkable:
+       - the fields are the ones summarySections() actually emits in
+         src/server/email/repository-intelligence-summary.ts (type, dates,
+         governing law, auto-renewal with notice days, termination for
+         convenience, payment terms, liability cap, indemnity scope and
+         whether it is uncapped, IP ownership);
+       - the client summary really does leave the playbook analysis behind,
+         which is the stated purpose of that file, not a marketing softener;
+       - the renewal notice email is src/app/api/cron/contract-alerts;
+       - the analysis is saved rather than recomputed, so the panel is not
+         a fresh AI call every time it is opened.
+     Do not add a row to the panel that the product cannot fill. -->
+<section class="section" id="after-signature" style="border-top:1px solid var(--border);">
+  <div class="container">
+    <div class="section-eyebrow">After signature</div>
+    <h2 class="section-title">Negotiated for weeks.<br>Then filed and never read again.</h2>
+    <p class="section-sub">An executed agreement usually comes back out of the drawer once something has already gone wrong. Midly reads it the moment it is signed, so your repository holds the terms you are actually living under rather than a pile of files somebody would have to open.</p>
+
+    <div class="how-grid" style="align-items:start;">
+
+      <div class="steps">
+        <div class="step active" style="cursor:default;">
+          <div class="step-num">01</div>
+          <div class="step-body">
+            <div class="step-title">What it says, without reading it again</div>
+            <div class="step-desc">A signed document opens on its own terms instead of the editor. What kind of agreement it is, when it starts and ends, which law governs it, the payment terms, where the liability cap sits and whether the indemnities sit outside it.</div>
+          </div>
+        </div>
+        <div class="step active" style="cursor:default;">
+          <div class="step-num">02</div>
+          <div class="step-body">
+            <div class="step-title">The renewal date comes and finds you</div>
+            <div class="step-desc">Auto-renewal and the notice period are pulled out as dates rather than left as a sentence in clause 14. Midly emails you when the window to get out opens, while there is still time to use it.</div>
+          </div>
+        </div>
+        <div class="step active" style="cursor:default;">
+          <div class="step-num">03</div>
+          <div class="step-body">
+            <div class="step-title">Your client gets the version they can read</div>
+            <div class="step-desc">One button sends them a plain summary of what they agreed to. Your playbook analysis stays with you, because what your house position says about their deal is your work and not theirs.</div>
+          </div>
+        </div>
+        <div class="step active" style="cursor:default;">
+          <div class="step-num">04</div>
+          <div class="step-body">
+            <div class="step-title">Ask it anything, about that agreement</div>
+            <div class="step-desc">Ask Midly answers from the executed document in front of it. If it cannot point to the language, it does not make the claim.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="how-visual">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;">
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-dim);">Repository intelligence</div>
+          <span class="hv-tag hv-tag-held">Executed</span>
+        </div>
+
+        <div style="font-size:14px;font-weight:650;color:var(--text);margin-bottom:14px;">Master Services Agreement</div>
+
+        <div style="background:var(--surface2);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;">
+          <div style="display:flex;justify-content:space-between;gap:12px;margin-bottom:8px;">
+            <span style="font-size:12px;color:var(--text-muted);">Effective</span>
+            <span style="font-size:12px;color:var(--text);">1 March 2026</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;gap:12px;margin-bottom:8px;">
+            <span style="font-size:12px;color:var(--text-muted);">Expires</span>
+            <span style="font-size:12px;color:var(--text);">28 February 2027</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;gap:12px;">
+            <span style="font-size:12px;color:var(--text-muted);">Governing law</span>
+            <span style="font-size:12px;color:var(--text);">Delaware</span>
+          </div>
+        </div>
+
+        <div style="background:var(--surface2);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
+            <div>
+              <div style="font-size:13px;color:var(--text);line-height:1.5;">Renews automatically</div>
+              <div style="font-size:12px;color:var(--text-muted);margin-top:4px;line-height:1.5;">Notice to stop it: 60 days</div>
+            </div>
+            <span class="hv-tag hv-tag-risk">Acts on its own</span>
+          </div>
+        </div>
+
+        <div style="background:var(--surface2);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
+            <div>
+              <div style="font-size:13px;color:var(--text);line-height:1.5;">Liability capped at 12 months of fees</div>
+              <div style="font-size:12px;color:var(--text-muted);margin-top:4px;line-height:1.5;">Indemnities sit outside the cap</div>
+            </div>
+            <span class="hv-tag hv-tag-risk">Read this</span>
+          </div>
+        </div>
+
+        <div style="background:var(--accent-dim);border:1px solid rgba(200,240,65,0.2);border-radius:8px;padding:14px;display:flex;align-items:center;gap:12px;margin-top:14px;">
+          <div style="width:8px;height:8px;background:var(--accent);border-radius:50%;flex-shrink:0;"></div>
+          <div style="font-size:13px;color:var(--accent);line-height:1.45;">Notice window opens 31 December. We will email you that morning</div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -3635,7 +3771,11 @@
   if (themeToggleMobile) themeToggleMobile.addEventListener('click', applyThemeToggle);
 
   function setStep(n) {
-    document.querySelectorAll('.step').forEach((s,i) => {
+    // SCOPED TO #how DELIBERATELY. This used to select .step across the whole
+    // document and toggle by index, so any other section reusing the .step
+    // styling had its active state silently stripped by the first click here.
+    // The After signature list is a static numbered list using the same class.
+    document.querySelectorAll('#how .step').forEach((s,i) => {
       s.classList.toggle('active', i === n);
     });
     // Swap the panel too. This used to only move the highlight, so every step
