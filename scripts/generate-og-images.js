@@ -31,9 +31,9 @@ const images = [
 </style></head>
 <body>
   <div class="wordmark">Midly.ai</div>
-  <div class="headline">Close deals faster.</div>
-  <div class="subtitle">AI-powered contract workflows for deal teams.</div>
-  <div class="url">app.midly.ai</div>
+  <div class="headline">Midly does the reading.<br>You keep the judgment.</div>
+  <div class="subtitle">Contract review and practice software<br>for attorneys and small firms.</div>
+  <div class="url">midly.ai</div>
 </body></html>`,
   },
   {
@@ -103,9 +103,9 @@ const images = [
 </style></head>
 <body>
   <div class="wordmark">Midly.ai</div>
-  <div class="headline">AI Contract Workflows. Built for Deal Teams.</div>
-  <div class="subtitle">AI-powered contract workflows for deal teams.</div>
-  <div class="url">app.midly.ai</div>
+  <div class="headline">Midly does the reading.<br>You keep the judgment.</div>
+  <div class="subtitle">Contract review and practice software<br>for attorneys and small firms.</div>
+  <div class="url">midly.ai</div>
 </body></html>`,
   },
 ];
