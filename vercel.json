@@ -175,6 +175,10 @@
       "destination": "/terms.html"
     },
     {
+      "source": "/features",
+      "destination": "/features.html"
+    },
+    {
       "source": "/esign",
       "destination": "/esign.html"
     },
