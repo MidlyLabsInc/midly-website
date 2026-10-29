@@ -1729,9 +1729,22 @@
   [data-theme="light"] .testimonial-card { background: #ffffff !important; border-color: rgba(0,0,0,0.08) !important; }
   [data-theme="light"] .how-panel { background: #ffffff !important; border-color: rgba(0,0,0,0.08) !important; }
 
-  /* ── PRODUCT SCREENSHOT ── */
-  .hero-shot { margin: 0; }
-  .hero-shot img { display: block; width: 100%; height: auto; background: #ffffff; }
+  /* ── SIDE PICKER (hero widget 2) ── */
+  .sd-question { font-size: 12px; font-weight: 600; color: var(--text); }
+  .sd-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px; }
+  .sd-opt { display: flex; flex-direction: column; gap: 2px; padding: 8px 10px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface); }
+  .sd-opt-title { font-size: 12px; font-weight: 600; color: var(--text); }
+  .sd-opt-hint { font-size: 10.5px; line-height: 1.4; color: var(--text-dim); }
+  .sd-opt-on { border-color: rgba(200,240,65,0.45); background: rgba(200,240,65,0.08); box-shadow: inset 0 0 0 1px rgba(200,240,65,0.25); }
+  .sd-opt-on .sd-opt-title { color: #C8F041; }
+  .sd-file { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border: 1px dashed var(--border); border-radius: 6px; color: var(--text-dim); font-size: 11px; }
+  .sd-file-name { color: var(--text-muted); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .sd-file-meta { font-size: 10px; letter-spacing: 0.02em; }
+  .sd-reading { font-size: 11px; font-weight: 500; color: #C8F041; }
+  [data-theme="light"] .sd-opt-on { border-color: rgba(77,117,0,0.45); background: rgba(77,117,0,0.06); box-shadow: inset 0 0 0 1px rgba(77,117,0,0.2); }
+  [data-theme="light"] .sd-opt-on .sd-opt-title,
+  [data-theme="light"] .sd-reading { color: #4d7500; }
+  [data-theme="light"] .sd-file { border-color: rgba(0,0,0,0.15); }
 
   /* ── WORKSPACE DEMO ── */
   .workspace-demo { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
@@ -2303,10 +2316,11 @@
         </div>
       </div>
 
-      <!-- Widget 2: the real Review dialog, captured in a test workspace -->
+      <!-- Widget 2: the side picker. Built in the same parts as widget 1 so the
+           two read as one product; the options and their hints are the app's. -->
       <div class="hero-widget-wrap">
         <div class="hero-widget-label">Pick your side, then upload</div>
-        <figure class="hero-mock redline-demo hero-shot">
+        <div class="hero-mock redline-demo side-demo" role="img" aria-label="Midly's Review a document step: Which side are you on? Buying or receiving is selected; the other options are Selling or providing, Something else and Not sure. A supplier MSA is attached, ready to review from the customer's side.">
           <div class="mock-bar">
             <div class="mock-dots">
               <span class="mock-dot"></span>
@@ -2315,8 +2329,43 @@
             </div>
             <div class="mock-url">app.midly.ai / review</div>
           </div>
-          <img src="/brand/screenshots/review-which-side-crop.webp" width="980" height="600" loading="lazy" decoding="async" alt="Midly's Review a document dialog asking Which side are you on?, with Buying or receiving selected and the options Selling or providing, Something else and Not sure beside it.">
-        </figure>
+          <div class="rd-header">
+            <div class="rd-doc-title">Review a document</div>
+            <div class="rd-parties">Midly reads the contract from your side, so the risks it flags are yours.</div>
+          </div>
+          <div class="rd-body">
+            <div class="sd-question">Which side are you on?</div>
+            <div class="sd-grid">
+              <div class="sd-opt sd-opt-on">
+                <span class="sd-opt-title">Buying or receiving</span>
+                <span class="sd-opt-hint">Customer, client, buyer, licensee, tenant</span>
+              </div>
+              <div class="sd-opt">
+                <span class="sd-opt-title">Selling or providing</span>
+                <span class="sd-opt-hint">Vendor, supplier, contractor, licensor, landlord</span>
+              </div>
+              <div class="sd-opt">
+                <span class="sd-opt-title">Something else</span>
+                <span class="sd-opt-hint">Name the party, e.g. the Receiving Party</span>
+              </div>
+              <div class="sd-opt">
+                <span class="sd-opt-title">Not sure</span>
+                <span class="sd-opt-hint">A balanced read of both sides</span>
+              </div>
+            </div>
+            <div class="sd-file">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+              <span class="sd-file-name">Supplier MSA (their paper).docx</span>
+              <span class="sd-file-meta">.docx</span>
+            </div>
+          </div>
+          <div class="rd-actions">
+            <span class="sd-reading">● Reading as the customer</span>
+            <div class="rd-action-btns">
+              <button class="rd-btn rd-btn-accept" type="button" tabindex="-1">Review it</button>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>
