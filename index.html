@@ -1729,6 +1729,10 @@
   [data-theme="light"] .testimonial-card { background: #ffffff !important; border-color: rgba(0,0,0,0.08) !important; }
   [data-theme="light"] .how-panel { background: #ffffff !important; border-color: rgba(0,0,0,0.08) !important; }
 
+  /* ── PRODUCT SCREENSHOT ── */
+  .hero-shot { margin: 0; }
+  .hero-shot img { display: block; width: 100%; height: auto; background: #ffffff; }
+
   /* ── WORKSPACE DEMO ── */
   .workspace-demo { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
   .ws-feed { padding: 8px 0; }
@@ -2299,75 +2303,20 @@
         </div>
       </div>
 
-      <!-- Widget 2: Team workspace activity feed -->
+      <!-- Widget 2: the real Review dialog, captured in a test workspace -->
       <div class="hero-widget-wrap">
-        <div class="hero-widget-label">Your team, in sync</div>
-        <div class="workspace-demo" id="workspaceDemo">
+        <div class="hero-widget-label">Pick your side, then upload</div>
+        <figure class="workspace-demo hero-shot">
           <div class="mock-bar">
             <div class="mock-dots">
               <span class="mock-dot"></span>
               <span class="mock-dot"></span>
               <span class="mock-dot"></span>
             </div>
-            <div class="mock-url">app.midly.ai / workspace</div>
+            <div class="mock-url">app.midly.ai / review</div>
           </div>
-          <div class="ws-feed" id="wsFeed">
-            <div class="ws-item" id="wsItem1">
-              <div class="ws-avatar" style="background:#1a2e0a;">SR</div>
-              <div class="ws-content">
-                <span class="ws-name">Sarah R.</span>
-                <span class="ws-action">created</span>
-                <span class="ws-doc">Acme Corp MSA</span>
-                <span class="ws-time">just now</span>
-              </div>
-              <div class="ws-status ws-status-progress">In Progress</div>
-            </div>
-            <div class="ws-item" id="wsItem2" style="opacity:0.3;">
-              <div class="ws-avatar" style="background:#0a1a2e;">MK</div>
-              <div class="ws-content">
-                <span class="ws-name">Marcus K.</span>
-                <span class="ws-action">sent for review</span>
-                <span class="ws-doc">Series B NDA</span>
-                <span class="ws-time">2m ago</span>
-              </div>
-              <div class="ws-status ws-status-review">In Review</div>
-            </div>
-            <div class="ws-item" id="wsItem3" style="opacity:0.3;">
-              <div class="ws-avatar" style="background:#2e1a0a;">AT</div>
-              <div class="ws-content">
-                <span class="ws-name">Alex T.</span>
-                <span class="ws-action">signed</span>
-                <span class="ws-doc">Vendor SaaS Agreement</span>
-                <span class="ws-time">14m ago</span>
-              </div>
-              <div class="ws-status ws-status-signed">Signed ✓</div>
-            </div>
-            <div class="ws-item" id="wsItem4" style="opacity:0.3;">
-              <div class="ws-avatar" style="background:#1a0a2e;">JL</div>
-              <div class="ws-content">
-                <span class="ws-name">Jordan L.</span>
-                <span class="ws-action">signed</span>
-                <span class="ws-doc">Employment Agreement</span>
-                <span class="ws-time">1h ago</span>
-              </div>
-              <div class="ws-status ws-status-signed">Signed ✓</div>
-            </div>
-          </div>
-          <div class="ws-stats">
-            <div class="ws-stat">
-              <div class="ws-stat-value" id="wsStatActive">1</div>
-              <div class="ws-stat-label">Active deals</div>
-            </div>
-            <div class="ws-stat">
-              <div class="ws-stat-value" id="wsStatReview">0</div>
-              <div class="ws-stat-label">In review</div>
-            </div>
-            <div class="ws-stat">
-              <div class="ws-stat-value ws-stat-green" id="wsStatSigned">0</div>
-              <div class="ws-stat-label">Signed</div>
-            </div>
-          </div>
-        </div>
+          <img src="/brand/screenshots/review-which-side-crop.webp" width="980" height="600" loading="lazy" decoding="async" alt="Midly's Review a document dialog asking Which side are you on?, with Buying or receiving selected and the options Selling or providing, Something else and Not sure beside it.">
+        </figure>
       </div>
 
     </div>

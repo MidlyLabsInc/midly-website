@@ -376,6 +376,11 @@
       gap: 32px !important;
     }
   }
+  .fit-shots { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 5fr); gap: 24px; align-items: start; margin-top: 48px; }
+  .fit-shot { margin: 0; }
+  .fit-shot img { display: block; width: 100%; height: auto; border: 1px solid var(--border); border-radius: var(--radius-lg); background: #ffffff; }
+  .fit-shot figcaption { margin-top: 12px; font-size: 13px; line-height: 1.5; color: var(--text-dim); }
+  @media (max-width: 900px) { .fit-shots { grid-template-columns: minmax(0, 1fr); gap: 32px; margin-top: 36px; } .fit-shots .fit-shot:first-child img { max-width: 420px; } }
 </style>
 
 <!-- Google Analytics 4 (GA4) -->
@@ -547,6 +552,17 @@
     <div class="section-eyebrow">How Midly fits a fractional practice</div>
     <h2 class="section-title">Review faster. Keep the record. Bill from it.</h2>
     <p class="section-sub">Upload the counterparty&rsquo;s contract and pick the side your client is on. Midly reviews it against your playbook and shows the terms that carry risk, each anchored to the exact clause so you can check it. The time you spend is captured against that client and document as you work, so the month you bill is the month you actually did. You make every call.</p>
+
+    <div class="fit-shots">
+      <figure class="fit-shot">
+        <img src="/brand/screenshots/review-which-side.webp" width="980" height="1228" loading="lazy" decoding="async" alt="Midly's Review a document dialog. Under Which side are you on?, Buying or receiving is selected; below it are an upload area for a .docx or .pdf and a checked option to run AI Insights on upload.">
+        <figcaption>Pick the side your client is on, then upload their paper.</figcaption>
+      </figure>
+      <figure class="fit-shot">
+        <img src="/brand/screenshots/review-findings.webp" width="1568" height="722" loading="lazy" decoding="async" alt="A completed Midly review of Datadog's published Master Subscription Agreement: the contract text on the left, and on the right the AI Insights panel listing each term area, such as scope and deliverables and payment terms, with a Full contract review button and an Ask Midly link on every row.">
+        <figcaption>The review beside the contract: every term area summarised, with Ask Midly one click away.</figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
