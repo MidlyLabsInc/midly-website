@@ -301,6 +301,10 @@
     {
       "source": "/blog/what-a-returned-redline-hides",
       "destination": "/blog/what-a-returned-redline-hides.html"
+    },
+    {
+      "source": "/fractional-gc",
+      "destination": "/fractional-gc.html"
     }
   ]
 }
