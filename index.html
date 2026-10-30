@@ -1352,7 +1352,7 @@
   .mobile-menu-demo-btn:hover { background: var(--accent-dark); }
 
   /* Between mobile and full desktop the index nav carries two CTAs
-     (Book a Demo + Try free) and wraps. Drop the secondary CTA in that
+     (Book a Demo + Start trial) and wraps. Drop the secondary CTA in that
      range so the bar stays flush, matching the other pages. */
   @media (max-width: 1180px) and (min-width: 901px) {
     .nav-actions .btn-accent { display: none; }
@@ -3791,7 +3791,7 @@
   var groups = IDS.map(function (id) {
     return {
       section: document.getElementById(id),
-      // Scoped to the nav and the drawer: "Try free" also points at #pricing
+      // Scoped to the nav and the drawer: "Start trial" also points at #pricing
       // and must not pick up a link colour.
       links: document.querySelectorAll(
         'nav .nav-links a[href="#' + id + '"], .mobile-menu a.mobile-menu-item[href="#' + id + '"]'
