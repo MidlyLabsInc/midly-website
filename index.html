@@ -244,10 +244,10 @@
 
 <!-- ============================== 1. HERO ============================== -->
 <header class="hero on-dark" data-no-reveal>
-  <div class="wrap hero-grid">
-    <div>
-      <p class="eyebrow">AI-powered commercial contracting</p>
-      <h1>The contract isn&rsquo;t the bottleneck. The process around it is.</h1>
+  <div class="wrap">
+    <p class="eyebrow">AI-powered commercial contracting</p>
+    <h1>The contract isn&rsquo;t the bottleneck. <span class="h1-line">The process around it is.</span></h1>
+    <div class="hero-row">
       <p class="hero-sub">From the first request to the next renewal, Midly brings contract review, negotiation, collaboration, and intelligence into one connected workspace.</p>
       <div class="hero-ctas">
         <a class="btn btn-primary" href="https://calendly.com/patience-midly/midly-demo" target="_blank" rel="noopener" data-cta="demo" data-cta-location="hero">
@@ -256,23 +256,30 @@
         </a>
         <a class="btn btn-ghost-dark" href="#how" data-cta="explore" data-cta-location="hero">See how it works</a>
       </div>
-      <p class="hero-promise"><strong>Midly does the reading. You keep the judgment.</strong> Built by a commercial attorney who still runs her own client work through it.</p>
     </div>
 
     <div class="hero-visual">
       <div class="window">
-        <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i><span>app.midly.ai</span></div>
+        <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i><span>app.midly.ai / review</span></div>
         <img class="hero-shot" src="/brand/screenshots/review-findings.webp" width="1568" height="722" fetchpriority="high" decoding="async"
           alt="A completed Midly review of Datadog's published Master Subscription Agreement: the contract text on the left, and on the right the AI Insights panel listing each term area, such as scope and deliverables and payment terms, with a Full contract review button and an Ask Midly link on every row.">
       </div>
-      <figure class="hero-inset" style="margin:0">
+      <figure class="hero-inset">
         <img src="/brand/screenshots/review-which-side-crop.webp" width="980" height="600" decoding="async"
           alt="Midly's Review a document dialog asking which side you are on: buying or receiving, selling or providing, something else, or not sure.">
       </figure>
+      <span class="hero-marker hero-marker-1" aria-hidden="true">1</span>
+      <span class="hero-marker hero-marker-2" aria-hidden="true">2</span>
     </div>
   </div>
-  <svg class="hero-wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 90V52C240 8 480 0 720 22s480 58 720 20v48z"/></svg>
 </header>
+<div class="wrap">
+    <ul class="hero-legend">
+      <li><span class="legend-num" aria-hidden="true">1</span><span><b>Read from your side.</b> Pick the party you represent, so the risks flagged are yours.</span></li>
+      <li><span class="legend-num" aria-hidden="true">2</span><span><b>AI Insights beside the contract.</b> Every term area summarised, with Ask Midly on each one.</span></li>
+      <li class="hero-promise"><span><b>Midly does the reading. You keep the judgment.</b> Built by a commercial attorney who still runs her own client work through it.</span></li>
+    </ul>
+</div>
 
 <!-- ============================== 2. PROBLEM ============================== -->
 <section class="section" id="problem" aria-labelledby="problem-title">
@@ -430,35 +437,96 @@
   </div>
 </section>
 
+<!-- ============================== 4b. DIFFERENTIATION ============================== -->
+<section class="section diff" id="connected" aria-labelledby="diff-title">
+  <div class="wrap">
+    <div class="section-head center">
+      <p class="eyebrow">Why not a chatbot and Word?</p>
+      <h2 id="diff-title">AI review is only the beginning.</h2>
+      <p>Midly connects the decisions made during negotiation to the agreement that gets signed, and to the obligations that follow it.</p>
+    </div>
+    <div class="diff-table" role="table" aria-label="A general AI assistant alongside Word and email, compared with Midly">
+      <div class="diff-row diff-head" role="row">
+        <span role="columnheader"><span class="sr-only">Stage</span></span>
+        <span role="columnheader">An AI chat beside Word, email and a shared drive</span>
+        <span role="columnheader">Midly</span>
+      </div>
+      <div class="diff-row" role="row">
+        <span role="rowheader">Review standards</span>
+        <span role="cell" data-label="AI chat + Word">Whatever you remembered to paste into the prompt this time.</span>
+        <span role="cell" data-label="Midly">Your playbook, clause by clause, read from the side you represent. Deviations stay flagged until they are resolved.</span>
+      </div>
+      <div class="diff-row" role="row">
+        <span role="rowheader">Negotiation context</span>
+        <span role="cell" data-label="AI chat + Word">Versions in file names, reasons in email threads.</span>
+        <span role="cell" data-label="Midly">Compare the version you sent with the one that came back. Your argument stays attached to the clause, and your positions carry into the next round.</span>
+      </div>
+      <div class="diff-row" role="row">
+        <span role="rowheader">Grounding</span>
+        <span role="cell" data-label="AI chat + Word">A fluent answer, whether or not the document says it.</span>
+        <span role="cell" data-label="Midly">Every finding anchored to the exact language. If Midly cannot point to it, it does not make the claim.</span>
+      </div>
+      <div class="diff-row" role="row">
+        <span role="rowheader">After signature</span>
+        <span role="cell" data-label="AI chat + Word">The final PDF goes into a folder.</span>
+        <span role="cell" data-label="Midly">The executed agreement becomes searchable intelligence: dates, governing law, payment terms, the liability cap.</span>
+      </div>
+      <div class="diff-row" role="row">
+        <span role="rowheader">Renewals</span>
+        <span role="cell" data-label="AI chat + Word">Someone remembers, or doesn&rsquo;t.</span>
+        <span role="cell" data-label="Midly">The notice window becomes a date, and Midly emails you when it opens.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============================== 5. AUDIENCES ============================== -->
-<section class="section" id="for" aria-labelledby="for-title" style="padding-top:0">
+<section class="section" id="for" aria-labelledby="for-title">
   <div class="wrap">
     <div class="section-head center">
       <p class="eyebrow">Built for how you work</p>
       <h2 id="for-title">Two ways in. One workspace underneath.</h2>
-      <p>Whether you carry several clients&rsquo; contracts or your own company&rsquo;s, the reading is the same. What surrounds it is not.</p>
+      <p>The reading is the same whether you carry several clients&rsquo; contracts or your own company&rsquo;s. What surrounds it is not.</p>
     </div>
     <div class="audience-grid">
       <article class="door door-a">
-        <svg class="door-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        <div class="door-top">
+          <svg class="door-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          <span class="door-who">You support several clients</span>
+        </div>
         <p class="eyebrow">For fractional GCs &amp; commercial practices</p>
         <h3>Be the legal team your clients need. Without building one yourself.</h3>
-        <p>A workspace for each client, contracts forwarded by email straight into the right client file, AI review against your playbook, time tracked against the document and invoiced from it, and a client portal your clients actually log in to.</p>
+        <p class="door-lede">Run the whole client relationship, from engagement to invoice, in the same place you review the paper.</p>
+        <ul class="door-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Client workspaces.</b> A hub per client, and a portal your clients actually log in to.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Intake by email.</b> Forward the draft and it lands in the right client file.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Review against your playbook.</b> Plus the standing instructions you keep for each client.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Time and billing.</b> Time tracked against the document, and invoices built from it.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Repository intelligence.</b> Executed terms, renewal alerts, and a plain summary for the client.</span></li>
+        </ul>
         <div class="door-links">
-          <a class="text-link" href="/attorneys?src=home-door" data-cta="audience" data-cta-location="audience" data-door="attorney">Explore for law practices <span aria-hidden="true">&rarr;</span></a>
-          <a class="door-secondary" href="/fractional-gc?src=home-door" data-cta="audience" data-cta-location="audience" data-door="fractional">Working on retainer? Fractional GCs</a>
+          <a class="btn btn-primary btn-sm" href="/attorneys?src=home-door" data-cta="audience" data-cta-location="audience" data-door="attorney">Explore for law practices</a>
+          <a class="door-secondary" href="/fractional-gc?src=home-door" data-cta="audience" data-cta-location="audience" data-door="fractional">Working on retainer? See the fractional GC page <span aria-hidden="true">&rarr;</span></a>
         </div>
-        <span class="door-art" aria-hidden="true"></span>
       </article>
       <article class="door door-b on-light">
-        <svg class="door-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01"/></svg>
+        <div class="door-top">
+          <svg class="door-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01"/></svg>
+          <span class="door-who">You support one business</span>
+        </div>
         <p class="eyebrow">For in-house legal teams</p>
         <h3>Stop chasing contracts. Start moving deals.</h3>
-        <p>One lawyer cannot sit in every negotiation. Set the playbook and approval thresholds once, give the business a way in, and keep every executed agreement and renewal in view.</p>
+        <p class="door-lede">Bring legal in earlier, let the business move inside the rules you set, and see every agreement in one place.</p>
+        <ul class="door-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Intake from the business.</b> Requests and counterparty paper arrive in one place, through your intake address.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Collaboration without the thread.</b> Every version, comment and approval in one trail.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Guardrails you set once.</b> Playbook positions and approval thresholds; red deviations stop and ask.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Approvals without seats.</b> Stakeholders sign off by magic link, in sequence across departments.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Contract visibility.</b> What is pending, active and expiring, with renewal alerts before the deadline.</span></li>
+        </ul>
         <div class="door-links">
-          <a class="text-link" href="/teams?src=home-door" data-cta="audience" data-cta-location="audience" data-door="inhouse">Explore for in-house teams <span aria-hidden="true">&rarr;</span></a>
+          <a class="btn btn-dark btn-sm" href="/teams?src=home-door" data-cta="audience" data-cta-location="audience" data-door="inhouse">Explore for in-house teams</a>
         </div>
-        <span class="door-art" aria-hidden="true"></span>
       </article>
     </div>
     <p class="audience-more">Past ten seats, or rolling out across regions? <a class="text-link" href="/enterprise" data-cta="audience" data-cta-location="audience" data-door="enterprise">Midly for Enterprise</a></p>
@@ -502,6 +570,42 @@
   </div>
 </section>
 
+<!-- ============================== 6b. PRICING ============================== -->
+<section class="section pricing" id="pricing" aria-labelledby="pricing-title">
+  <div class="wrap">
+  <div class="plans">
+    <div class="plans-head">
+      <h2 id="pricing-title">Simple plans. Start with a trial or a demo.</h2>
+      <p>Every plan starts with a 7-day trial. Annual billing saves 15%.</p>
+    </div>
+    <div class="plan-row">
+      <div class="plan">
+        <span class="plan-name">Team</span>
+        <span class="plan-price">$99 <small>/seat/mo</small></span>
+        <p>For deal teams that need legal in the loop without slowing everything down. 3 to 10 seats.</p>
+        <div class="plan-links"><a href="https://app.midly.ai/sign-up?plan=team" data-cta="trial" data-cta-location="plans-team">Start free 7-day trial</a></div>
+      </div>
+      <div class="plan">
+        <span class="plan-name">Outside Counsel</span>
+        <span class="plan-price">$129 <small>/seat/mo</small></span>
+        <p>For law firms and solo attorneys running client work. Up to 5 attorneys, with client hubs, time tracking, and invoicing.</p>
+        <div class="plan-links"><a href="https://app.midly.ai/sign-up?plan=counsel" data-cta="trial" data-cta-location="plans-counsel">Start free 7-day trial</a></div>
+      </div>
+      <div class="plan">
+        <span class="plan-name">Enterprise</span>
+        <span class="plan-price">$6,450 <small>/month, flat</small></span>
+        <p>Up to 50 seats, SSO and advanced permissions, custom playbooks, and dedicated onboarding.</p>
+        <div class="plan-links">
+          <a href="https://calendly.com/patience-midly/midly-demo" target="_blank" rel="noopener" data-cta="demo" data-cta-location="plans-enterprise">Book a demo first</a>
+          <a class="quiet" href="https://app.midly.ai/sign-up?plan=enterprise" data-cta="trial" data-cta-location="plans-enterprise">Start and book onboarding</a>
+        </div>
+      </div>
+    </div>
+    <p class="plans-fine">No credit card required for eligible new trials. When a trial ends, choose a plan, or do nothing and it simply stops. A short bar license certification at signup unlocks the Outside Counsel workspace. By creating an account, you agree to our <a href="/terms">Terms of Use</a> and <a href="/privacy">Privacy Notice</a>.</p>
+  </div>
+  </div>
+</section>
+
 <!-- ============================== 7. FOUNDER ============================== -->
 <section class="section" id="founder" aria-labelledby="founder-title">
   <div class="wrap founder-grid">
@@ -534,36 +638,6 @@
       </a>
     </div>
 
-    <div class="plans" id="pricing" aria-labelledby="pricing-title">
-      <div class="plans-head">
-        <h3 id="pricing-title">Prefer to start on your own?</h3>
-        <p>Every plan starts with a 7-day trial. Annual billing saves 15%.</p>
-      </div>
-      <div class="plan-row">
-        <div class="plan">
-          <span class="plan-name">Team</span>
-          <span class="plan-price">$99 <small>/seat/mo</small></span>
-          <p>For deal teams that need legal in the loop without slowing everything down. 3 to 10 seats.</p>
-          <div class="plan-links"><a href="https://app.midly.ai/sign-up?plan=team" data-cta="trial" data-cta-location="plans-team">Start free 7-day trial</a></div>
-        </div>
-        <div class="plan">
-          <span class="plan-name">Outside Counsel</span>
-          <span class="plan-price">$129 <small>/seat/mo</small></span>
-          <p>For law firms and solo attorneys running client work. Up to 5 attorneys, with client hubs, time tracking, and invoicing.</p>
-          <div class="plan-links"><a href="https://app.midly.ai/sign-up?plan=counsel" data-cta="trial" data-cta-location="plans-counsel">Start free 7-day trial</a></div>
-        </div>
-        <div class="plan">
-          <span class="plan-name">Enterprise</span>
-          <span class="plan-price">$6,450 <small>/month, flat</small></span>
-          <p>Up to 50 seats, SSO and advanced permissions, custom playbooks, and dedicated onboarding.</p>
-          <div class="plan-links">
-            <a href="https://calendly.com/patience-midly/midly-demo" target="_blank" rel="noopener" data-cta="demo" data-cta-location="plans-enterprise">Book a demo first</a>
-            <a class="quiet" href="https://app.midly.ai/sign-up?plan=enterprise" data-cta="trial" data-cta-location="plans-enterprise">Start and book onboarding</a>
-          </div>
-        </div>
-      </div>
-      <p class="plans-fine">No credit card required for eligible new trials. When a trial ends, choose a plan, or do nothing and it simply stops. A short bar license certification at signup unlocks the Outside Counsel workspace. By creating an account, you agree to our <a href="/terms">Terms of Use</a> and <a href="/privacy">Privacy Notice</a>.</p>
-    </div>
   </div>
 </section>
 
