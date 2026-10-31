@@ -144,8 +144,8 @@
         "AI review graded against your own playbook",
         "Tracked-change negotiation in the document",
         "Cited-clause Ask Midly",
-        "Executed agreement repository with key terms",
-        "Renewal and notice window alerts",
+        "Executed agreement records with key terms",
+        "Expiry and notice deadline reminders",
         "Client workspaces, time tracking, and invoicing for outside counsel"
       ],
       "publisher": { "@id": "https://www.midly.ai/#organization" }
@@ -312,7 +312,7 @@
         <div class="stage-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg></div>
         <span class="stage-num">01</span>
         <h3>Intake</h3>
-        <p>Forward the draft to your workspace&rsquo;s intake address or upload it to a matter. Their tracked changes arrive intact.</p>
+        <p>Forward contracts to your Midly intake inbox, or upload them, then file each one to the right client or matter. Tracked changes in Word files arrive intact.</p>
       </li>
       <li class="stage card">
         <div class="stage-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h5"/><path d="M14 2v6h6"/><path d="M20 8v3"/><circle cx="17" cy="17" r="3"/><path d="m21 21-1.8-1.8"/></svg></div>
@@ -330,16 +330,16 @@
         <div class="stage-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="5" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><path d="M10 12h4"/></svg></div>
         <span class="stage-num">04</span>
         <h3>Store</h3>
-        <p>The executed agreement is kept with its terms pulled out: dates, governing law, payment terms, and where the liability cap sits.</p>
+        <p>The executed agreement is kept with its key terms pulled out: dates, governing law, payment terms, and the liability cap.</p>
       </li>
       <li class="stage card">
         <div class="stage-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></div>
         <span class="stage-num">05</span>
         <h3>Monitor</h3>
-        <p>Renewal and notice periods become dates, and Midly emails you when the window to act opens.</p>
+        <p>Expiry, auto-renewal and notice terms are pulled out, and Midly emails reminders before expiry and on the last day to give notice.</p>
       </li>
     </ol>
-    <p class="lifecycle-note center">The positions you took in the last round come with you into the next one. <strong>The fiftieth time you argue a clause, it does not start where the first one did.</strong></p>
+    <p class="lifecycle-note center">On the same agreement, the positions you took last round come with you into the next review. <strong>Findings are marked new, carried forward, or resolved, so a round does not start from nothing.</strong></p>
   </div>
 </section>
 
@@ -349,7 +349,7 @@
     <div class="section-head">
       <p class="eyebrow">Inside Midly</p>
       <h2 id="features-title">Two of a hundred changes need you. You are told which two.</h2>
-      <p>The markup comes back with a hundred changes in it and two of them move the risk. Midly reads the other side&rsquo;s paper against your playbook, and you decide what goes into the document.</p>
+      <p>The markup comes back with a hundred changes in it and two of them move the risk. Midly rates every change by risk and calls it accept, push back or counter, so the few that matter stand out. You decide what goes into the document.</p>
     </div>
 
     <div class="tour">
@@ -361,7 +361,7 @@
           <strong>Your side, first</strong><span>The risks it flags are the ones that are yours.</span>
         </button>
         <button class="tour-tab" role="tab" id="tab-playbook" aria-controls="panel-playbook" aria-selected="false" tabindex="-1" data-tab="playbook" type="button">
-          <strong>Graded against your playbook</strong><span>Deviations separated from noise, anchored to the language.</span>
+          <strong>Every change, rated</strong><span>Risk and a recommended call on each change they made.</span>
         </button>
         <button class="tour-tab" role="tab" id="tab-markup" aria-controls="panel-markup" aria-selected="false" tabindex="-1" data-tab="markup" type="button">
           <strong>Your markup, in your name</strong><span>Tracked changes with the argument attached.</span>
@@ -378,7 +378,7 @@
             </div>
           </div>
           <div class="tour-meta">
-            <p>Summarised in the document&rsquo;s own register, in plain English, or in legal terms. Ask Midly answers from the contract in front of it, and if it cannot point to the language, it does not make the claim.</p>
+            <p>Summarised in the document&rsquo;s own register, in plain English, or in legal terms. Ask Midly answers from the contract in front of it and quotes the language it relied on; a quote it cannot find in the document is flagged.</p>
             <span class="tag tag-real">Product screen</span>
           </div>
         </div>
@@ -402,16 +402,16 @@
             <div class="window">
               <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i><span>MSA Acme v4 (Acme markup).docx</span></div>
               <div class="mock">
-                <div class="mock-head"><span class="mock-title">Graded against your playbook</span><span class="pill pill-lime">100 changes read</span></div>
-                <div class="mock-row flag"><div><b>Limitation of liability</b><small>Cap cut from twelve months of fees to one</small></div><span class="pill pill-risk">Moves risk</span></div>
-                <div class="mock-row flag"><div><b>Indemnity</b><small>Mutual quietly became one way</small></div><span class="pill pill-risk">Moves risk</span></div>
-                <div class="mock-row ok"><div><b>98 other changes</b><small>Defined terms, cross references, wording</small></div><span class="pill pill-calm">No risk change</span></div>
-                <p class="mock-foot">Two of a hundred need you. You are told which two.</p>
+                <div class="mock-head"><span class="mock-title">Their changes, analysed</span><span class="pill pill-lime">100 changes</span></div>
+                <div class="mock-row flag"><div><b>Limitation of liability</b><small>Cap cut from twelve months of fees to one. Suggested counter: restore twelve months.</small></div><span class="pill pill-risk">High &middot; Counter</span></div>
+                <div class="mock-row flag"><div><b>Indemnity</b><small>Mutual indemnity made one way</small></div><span class="pill pill-risk">High &middot; Push back</span></div>
+                <div class="mock-row ok"><div><b>Definitions, 1.4</b><small>&ldquo;Affiliate&rdquo; reworded, same meaning</small></div><span class="pill pill-calm">Low &middot; Accept</span></div>
+                <p class="mock-foot">Every change rated low, medium or high, with a call on each.</p>
               </div>
             </div>
           </div>
           <div class="tour-meta">
-            <p>Your playbook, your standing instructions for a client, and the positions you took in the last round all carry into the next review.</p>
+            <p>Findings are graded against your playbook, or Midly&rsquo;s built-in standards until you add one, and outside counsel can add standing instructions per client.</p>
             <span class="tag tag-illus">Illustration</span>
           </div>
         </div>
@@ -428,7 +428,7 @@
             </div>
           </div>
           <div class="tour-meta">
-            <p>Their markup arrives as real tracked changes you accept or reject where they sit. Yours go back the same way, so nobody downloads to Word and uploads it again.</p>
+            <p>Their Word markup arrives as real tracked changes you accept or reject where they sit. Yours go back the same way in the .docx, with the comments you choose to share.</p>
             <span class="tag tag-illus">Illustration</span>
           </div>
         </div>
@@ -454,27 +454,27 @@
       <div class="diff-row" role="row">
         <span role="rowheader">Review standards</span>
         <span role="cell" data-label="AI chat + Word">Whatever you remembered to paste into the prompt this time.</span>
-        <span role="cell" data-label="Midly">Your playbook, clause by clause, read from the side you represent. Deviations stay flagged until they are resolved.</span>
+        <span role="cell" data-label="Midly">Your playbook, read from the side you represent. Red deviations stay flagged until someone resolves or acknowledges them.</span>
       </div>
       <div class="diff-row" role="row">
         <span role="rowheader">Negotiation context</span>
         <span role="cell" data-label="AI chat + Word">Versions in file names, reasons in email threads.</span>
-        <span role="cell" data-label="Midly">Compare the version you sent with the one that came back. Your argument stays attached to the clause, and your positions carry into the next round.</span>
+        <span role="cell" data-label="Midly">Compare the version you sent with the one that came back. Your argument stays attached to the clause, and on the same agreement your positions carry into the next round.</span>
       </div>
       <div class="diff-row" role="row">
         <span role="rowheader">Grounding</span>
         <span role="cell" data-label="AI chat + Word">A fluent answer, whether or not the document says it.</span>
-        <span role="cell" data-label="Midly">Every finding anchored to the exact language. If Midly cannot point to it, it does not make the claim.</span>
+        <span role="cell" data-label="Midly">Every finding is tied to the clause it quotes, and high-risk findings are checked against the text before you see them.</span>
       </div>
       <div class="diff-row" role="row">
         <span role="rowheader">After signature</span>
         <span role="cell" data-label="AI chat + Word">The final PDF goes into a folder.</span>
-        <span role="cell" data-label="Midly">The executed agreement becomes searchable intelligence: dates, governing law, payment terms, the liability cap.</span>
+        <span role="cell" data-label="Midly">The executed agreement becomes a record of its key terms: dates, governing law, payment terms, the liability cap.</span>
       </div>
       <div class="diff-row" role="row">
         <span role="rowheader">Renewals</span>
         <span role="cell" data-label="AI chat + Word">Someone remembers, or doesn&rsquo;t.</span>
-        <span role="cell" data-label="Midly">The notice window becomes a date, and Midly emails you when it opens.</span>
+        <span role="cell" data-label="Midly">Expiry and notice terms become dates, and Midly emails reminders before they pass.</span>
       </div>
     </div>
   </div>
@@ -496,13 +496,13 @@
         </div>
         <p class="eyebrow">For fractional GCs &amp; commercial practices</p>
         <h3>Be the legal team your clients need. Without building one yourself.</h3>
-        <p class="door-lede">Run the whole client relationship, from engagement to invoice, in the same place you review the paper.</p>
+        <p class="door-lede">Run client work from intake to invoice in the same place you review the paper.</p>
         <ul class="door-list">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Client workspaces.</b> A hub per client, and a portal your clients actually log in to.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Intake by email.</b> Forward the draft and it lands in the right client file.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Client workspaces.</b> A hub per client, and a secure portal where clients review documents, approve, and message you.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Intake by email.</b> Forward contracts to your Midly intake inbox, then file them to the client in one click.</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Review against your playbook.</b> Plus the standing instructions you keep for each client.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Time and billing.</b> Time tracked against the document, and invoices built from it.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Repository intelligence.</b> Executed terms, renewal alerts, and a plain summary for the client.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Time and billing.</b> Time tracked against the document once you mark the work billable, invoices built from it, and payment through your own Stripe account.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Repository intelligence.</b> Executed terms, expiry reminders, and a plain-English summary you can email the client.</span></li>
         </ul>
         <div class="door-links">
           <a class="btn btn-primary btn-sm" href="/attorneys?src=home-door" data-cta="audience" data-cta-location="audience" data-door="attorney">Explore for law practices</a>
@@ -518,11 +518,11 @@
         <h3>Stop chasing contracts. Start moving deals.</h3>
         <p class="door-lede">Bring legal in earlier, let the business move inside the rules you set, and see every agreement in one place.</p>
         <ul class="door-list">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Intake from the business.</b> Requests and counterparty paper arrive in one place, through your intake address.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Collaboration without the thread.</b> Every version, comment and approval in one trail.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Guardrails you set once.</b> Playbook positions and approval thresholds; red deviations stop and ask.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Approvals without seats.</b> Stakeholders sign off by magic link, in sequence across departments.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Contract visibility.</b> What is pending, active and expiring, with renewal alerts before the deadline.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Intake from the business.</b> Contracts sent to your intake address arrive in one place: your review queue.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Collaboration without the thread.</b> Version history, comments and approvals on every document, instead of across email.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Guardrails you set once.</b> Approval rules by contract value, template or region, and red playbook deviations block sending until they are resolved.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Sign-off without seats.</b> Business stakeholders review and sign off by magic link, in sequence when you need it.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Contract visibility.</b> What is pending, active and expiring, with expiry reminders by email.</span></li>
         </ul>
         <div class="door-links">
           <a class="btn btn-dark btn-sm" href="/teams?src=home-door" data-cta="audience" data-cta-location="audience" data-door="inhouse">Explore for in-house teams</a>
@@ -539,14 +539,14 @@
     <div class="section-head">
       <p class="eyebrow">Beyond the signature</p>
       <h2 id="after-title">The agreement is signed. The intelligence shouldn&rsquo;t stop.</h2>
-      <p>Negotiated for weeks, then filed and never read again. Midly reads the agreement once it is executed, so your repository holds the terms you are actually living under, not a pile of files somebody would have to open.</p>
+      <p>Negotiated for weeks, then filed and never read again. Midly reads an agreement once it is marked executed, so your repository holds the terms you are actually living under, not a pile of files somebody would have to open.</p>
     </div>
     <div class="after-grid">
       <ul class="after-points">
-        <li><h3>What it says, without reading it again</h3><p>What kind of agreement it is, when it starts and ends, the governing law, the payment terms, where the liability cap sits, and whether the indemnities sit outside it.</p></li>
-        <li><h3>The renewal date comes and finds you</h3><p>Auto-renewal and the notice period are pulled out as dates rather than left as a sentence in clause 14.</p></li>
-        <li><h3>A version your client can read</h3><p>Send a plain summary of what they agreed to. Your playbook analysis stays with you.</p></li>
-        <li><h3>Ask it anything about that agreement</h3><p>Ask Midly answers from the executed document, with the language it relied on.</p></li>
+        <li><h3>What it says, without reading it again</h3><p>What kind of agreement it is, when it starts and ends, the governing law, the payment terms, the liability cap, and whether indemnities are uncapped.</p></li>
+        <li><h3>The deadline comes and finds you</h3><p>Auto-renewal and the notice period are pulled out of clause 14, and Midly emails reminders before expiry and on the last day to give notice.</p></li>
+        <li><h3>A version your client can read</h3><p>Email your client a plain-English summary of the key terms. Your playbook analysis stays with you.</p></li>
+        <li><h3>Ask it anything about that agreement</h3><p>Ask Midly answers from the executed document and quotes the language it relied on.</p></li>
       </ul>
       <div>
         <div class="repo-card">
@@ -558,10 +558,10 @@
             <div><small>Governing law</small><b>Delaware</b></div>
           </div>
           <div class="mock-row"><div><b>Renews automatically</b><small>Notice to stop it: 60 days</small></div><span class="pill pill-calm">Acts on its own</span></div>
-          <div class="mock-row flag"><div><b>Liability capped at 12 months of fees</b><small>Indemnities sit outside the cap</small></div><span class="pill pill-risk">Read this</span></div>
+          <div class="mock-row flag"><div><b>Liability capped at 12 months of fees</b><small>Indemnities uncapped</small></div><span class="pill pill-risk">Read this</span></div>
           <div class="repo-alert">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
-            <span>Notice window opens 31 December. We will email you that morning.</span>
+            <span>Last day to give notice: 30 December. Midly emails a reminder that morning.</span>
           </div>
         </div>
         <p class="shot-caption"><span class="tag tag-illus">Illustration</span></p>
