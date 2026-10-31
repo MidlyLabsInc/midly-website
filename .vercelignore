@@ -1,0 +1,6 @@
+# Files kept in version control but never deployed to midly.ai.
+#
+# docs/ holds internal redesign audits, compliance notes and launch
+# checklists. This site deploys the repository root as static files, so
+# anything not listed here is publicly reachable by URL.
+docs/
