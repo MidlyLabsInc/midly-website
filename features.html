@@ -415,9 +415,21 @@
      Every capability below is stated as a SPECIFIC a reader can check,
      because that is what a buyer is actually testing. Do not add a line
      here that the product cannot do, and do not soften a number into a
-     claim. The numbers are real: eighteen named clause families, five free
-     reviews a month, three answered markups before a rate appears, twelve
-     characters. Each of them is a constant in the codebase. */
+     claim. The numbers are real and each is a constant in the codebase:
+     eighteen named clause families (CLAUSE_FAMILIES, plus an "Other"
+     catch-all that is deliberately not counted), three answered markups
+     before a rate appears (MIN_FOR_A_RATE), twelve characters
+     (DECIDED_MIN).
+
+     "Five free reviews a month" used to be in this list and is GONE. It
+     described the free plan, which has been retired: there is now a free
+     trial with full access for the trial period and no free tier behind
+     it. Nothing in the product has ever metered reviews monthly. The line
+     survived the plan it described by months, sitting in a note that told
+     the next editor the number was real and checkable, which is the most
+     dangerous place for a false claim to sit. Verify against the
+     codebase before adding a number here, and delete one the moment the
+     thing it counts goes away. */
   .feat-group { padding: 72px 0; border-top: 1px solid var(--border); }
   .feat-group:first-of-type { border-top: none; padding-top: 48px; }
   .feat-stage {
