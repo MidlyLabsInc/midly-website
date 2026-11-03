@@ -1,0 +1,89 @@
+/* ===========================================================================
+   Legacy page theme bridge.
+
+   The pages built before the homepage redesign carry their own inline styles,
+   written around a set of colour tokens (--bg, --surface, --accent...), some
+   dark by default and some with a light/dark toggle. This file, linked after
+   those inline styles, maps every one of those tokens onto the homepage
+   palette in chrome.css (ivory page, paper cards, near-black text, lime calls
+   to action, teal for supporting accents), so each page matches the homepage
+   without rewriting its layout. There is one theme, light; the toggle is gone.
+
+   The tokens, and the button colours below, are set with !important on html
+   and body because the old pages declare them on both, some of them under
+   [data-theme="light"] selectors of higher specificity than :root. A page
+   restyled onto site.css should drop this file.
+   =========================================================================== */
+
+html[data-theme],
+html[data-theme] body,
+html[data-theme] #pricing {
+  --bg: var(--ivory) !important;
+  --bg-primary: var(--ivory) !important;
+  --surface: var(--paper) !important;
+  --bg-card: var(--paper) !important;
+  --surface2: #EAE7DF !important;
+  --bg-secondary: #EAE7DF !important;
+
+  --border: rgba(10, 10, 10, 0.1) !important;
+  --border-color: rgba(10, 10, 10, 0.1) !important;
+  --border-hover: rgba(10, 10, 10, 0.2) !important;
+
+  --text: var(--ink) !important;
+  --text-primary: var(--ink) !important;
+  --text-muted: rgba(10, 10, 10, 0.68) !important;
+  --text-dim: rgba(10, 10, 10, 0.5) !important;
+
+  /* --accent is used for text and small marks on the ivory page, so it takes
+     the dark lime that passes contrast; buttons get real lime below. */
+  --accent: var(--lime-ink) !important;
+  --accent-dark: #2F4405 !important;
+  --accent-dim: rgba(63, 90, 7, 0.1) !important;
+  --accent-dim2: rgba(63, 90, 7, 0.05) !important;
+
+  /* The old gold was a second accent; the homepage's second colour is teal. */
+  --gold: var(--teal) !important;
+  --gold-dim: rgba(18, 63, 56, 0.08) !important;
+
+  --track-card-bg: rgba(10, 10, 10, 0.018) !important;
+  --track-glow-bg: rgba(63, 90, 7, 0.07) !important;
+  --track-glow-border: rgba(63, 90, 7, 0.55) !important;
+  --track-shadow: rgba(10, 10, 10, 0.14) !important;
+}
+
+html[data-theme] body {
+  background: var(--ivory);
+  color: var(--ink);
+}
+
+/* Primary calls to action: lime with near-black text, as on the homepage. */
+html[data-theme] .btn-primary,
+html[data-theme] .btn-accent,
+html[data-theme] .btn-cta-primary,
+html[data-theme] .cta-primary,
+html[data-theme] .ent-col-cta-accent,
+html[data-theme] .ent-submit {
+  background: var(--lime) !important;
+  color: var(--ink) !important;
+  border-color: var(--lime) !important;
+}
+html[data-theme] .btn-primary:hover,
+html[data-theme] .btn-accent:hover,
+html[data-theme] .btn-cta-primary:hover,
+html[data-theme] .cta-primary:hover,
+html[data-theme] .ent-col-cta-accent:hover,
+html[data-theme] .ent-submit:hover {
+  background: #D6F76A !important;
+  color: var(--ink) !important;
+}
+
+/* Headings at the homepage's weight (700, as in site.css). The old pages set
+   Syne at 800, which is visibly wider and heavier. */
+html[data-theme] h1,
+html[data-theme] h2,
+html[data-theme] h3 {
+  font-weight: 700 !important;
+}
+
+/* Content sits under the fixed homepage nav. */
+html[data-theme] { scroll-padding-top: calc(var(--nav-h) + 16px); }

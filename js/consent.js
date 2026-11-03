@@ -282,6 +282,14 @@
     var footer = document.querySelector("footer");
     if (!footer) return;
     var a = el("a", { href: "#", "data-cookie-settings": "" }, "Cookie settings");
+    // The site footer's bottom row (copyright, location) is where it belongs;
+    // appended to the footer itself it landed below the columns, at the edge.
+    var base = footer.querySelector(".footer-base");
+    if (base) {
+      a.style.cssText = "color:inherit;text-decoration:none";
+      base.appendChild(a);
+      return;
+    }
     a.style.cssText = "display:inline-block;margin-top:12px;font-size:13px;opacity:.8";
     footer.appendChild(a);
   }
