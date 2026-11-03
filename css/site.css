@@ -1,29 +1,20 @@
 /* ===========================================================================
    Midly site foundation: design tokens, base type, nav, buttons, footer.
 
-   Introduced with the homepage redesign. Pages adopt it one at a time; pages
-   that do not link it keep their own inline styles and are unaffected.
+   Introduced with the homepage redesign. The nav, footer, buttons and the
+   palette tokens they use live in chrome.css, which every page links; this
+   file adds the homepage's base type and text tokens on top.
    Brand colours are the established ones (near-black, warm ivory, lime);
    deep teal is a supporting colour for dark bands, not a rebrand.
    =========================================================================== */
 
 :root {
-  --ink: #0A0A0A;
-  --ivory: #F2F0EB;
-  --paper: #FAF9F5;          /* a lifted ivory for cards on the ivory page */
-  --lime: #C8F041;
-  --lime-ink: #3F5A07;       /* lime family, dark enough for AA text on ivory */
-  --teal: #123F38;
-  --teal-deep: #0C2E29;
-  --teal-soft: #E3EBE6;
+  /* Palette, layout and nav tokens are in chrome.css, linked first. */
 
   --text: #0A0A0A;
   --text-muted: rgba(10, 10, 10, 0.68);
   --text-dim: rgba(10, 10, 10, 0.5);
   --line: rgba(10, 10, 10, 0.1);
-  --on-dark: #F2F0EB;
-  --on-dark-muted: rgba(242, 240, 235, 0.74);
-  --line-dark: rgba(242, 240, 235, 0.14);
 
   --font-display: 'Syne', system-ui, sans-serif;
   --font-body: 'DM Sans', system-ui, sans-serif;
@@ -32,11 +23,7 @@
   --radius: 14px;
   --radius-lg: 22px;
   --shadow: 0 1px 2px rgba(10, 10, 10, 0.06), 0 12px 32px rgba(10, 10, 10, 0.08);
-  --shadow-lg: 0 2px 6px rgba(0, 0, 0, 0.12), 0 30px 80px rgba(0, 0, 0, 0.32);
 
-  --wrap: 1280px;
-  --gutter: clamp(16px, 4vw, 40px);
-  --nav-h: 68px;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -77,125 +64,12 @@ p { margin: 0; }
 }
 .on-dark .eyebrow, .eyebrow.on-dark { color: var(--lime); }
 
-/* ---- Buttons ------------------------------------------------------------ */
-.btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-  min-height: 48px; padding: 12px 22px; border-radius: 10px;
-  font: 600 16px/1.2 var(--font-body); text-decoration: none; white-space: nowrap;
-  border: 1.5px solid transparent; cursor: pointer;
-  transition: background-color .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
-}
-.btn svg { width: 18px; height: 18px; transition: transform .2s ease; }
-.btn:hover svg { transform: translateX(3px); }
-.btn-primary { background: var(--lime); color: var(--ink); }
-.btn-primary:hover { background: #D6F76A; }
-.btn-ghost-dark { color: var(--on-dark); border-color: rgba(242, 240, 235, 0.42); }
-.btn-ghost-dark:hover { border-color: var(--on-dark); background: rgba(242, 240, 235, 0.06); }
-.btn-dark { background: var(--teal); color: var(--on-dark); }
-.btn-dark:hover { background: var(--teal-deep); }
-.btn-sm { min-height: 40px; padding: 8px 16px; font-size: 15px; }
-
 .text-link {
   font-weight: 600; text-decoration: none; color: var(--lime-ink);
   display: inline-flex; align-items: center; gap: 6px;
 }
 .text-link:hover { text-decoration: underline; text-underline-offset: 4px; }
 .on-dark .text-link { color: var(--lime); }
-
-/* ---- Nav ---------------------------------------------------------------- */
-.site-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  height: var(--nav-h);
-  background: rgba(18, 63, 56, 0.92);
-  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--line-dark);
-  color: var(--on-dark);
-}
-.site-nav.scrolled { height: 60px; }
-.site-nav .wrap { height: 100%; display: flex; align-items: center; gap: 32px; }
-/* The official lockup SVG is drawn on a 520x100 canvas with the mark and
-   wordmark in the left ~200 units, so it is shown through a window that
-   crops the empty right side rather than being edited. */
-.logo-crop { display: inline-block; overflow: hidden; flex-shrink: 0; width: calc(var(--logo-h) * 2); }
-.logo-crop img { height: var(--logo-h); width: auto; max-width: none; }
-.nav-logo { --logo-h: 46px; display: inline-flex; align-items: center; }
-.site-nav.scrolled .nav-logo { --logo-h: 42px; }
-/* motion.css sets `nav.scrolled .nav-logo img { height: 26px }` for the old
-   uncropped logo; match its specificity so this file (loaded later) wins. */
-nav.site-nav .nav-logo img { height: var(--logo-h); }
-
-.nav-menu { display: flex; align-items: center; gap: 4px; list-style: none; margin: 0; padding: 0; }
-.nav-menu > li { position: relative; }
-.nav-item {
-  display: inline-flex; align-items: center; gap: 4px;
-  padding: 8px 12px; border-radius: 8px;
-  font: 500 15px/1 var(--font-body); color: var(--on-dark-muted);
-  text-decoration: none; background: none; border: 0; cursor: pointer;
-}
-.nav-item:hover, .nav-item[aria-expanded="true"] { color: var(--on-dark); background: rgba(242, 240, 235, 0.08); }
-.nav-item svg { width: 14px; height: 14px; transition: transform .2s ease; }
-.nav-item[aria-expanded="true"] svg { transform: rotate(180deg); }
-
-.nav-dropdown {
-  position: absolute; top: calc(100% + 8px); left: 0; min-width: 280px;
-  background: var(--paper); color: var(--text);
-  border-radius: var(--radius); box-shadow: var(--shadow-lg);
-  padding: 8px; list-style: none; margin: 0;
-  display: none;
-}
-.nav-dropdown.open { display: block; }
-.nav-dropdown a {
-  display: block; padding: 10px 12px; border-radius: 10px; text-decoration: none;
-}
-.nav-dropdown a:hover, .nav-dropdown a:focus-visible { background: var(--teal-soft); }
-.nav-dropdown strong { display: block; font-size: 15px; font-weight: 600; }
-.nav-dropdown span { display: block; font-size: 13px; color: var(--text-muted); line-height: 1.4; margin-top: 2px; }
-
-.nav-actions { margin-left: auto; display: flex; align-items: center; gap: 8px; }
-.nav-login { color: var(--on-dark-muted); text-decoration: none; font-weight: 500; font-size: 15px; padding: 8px 12px; border-radius: 8px; }
-.nav-login:hover { color: var(--on-dark); }
-
-.nav-toggle {
-  display: none; margin-left: auto;
-  width: 44px; height: 44px; border-radius: 10px; border: 1px solid var(--line-dark);
-  background: none; color: var(--on-dark); cursor: pointer;
-  align-items: center; justify-content: center;
-}
-.nav-toggle svg { width: 22px; height: 22px; }
-
-.mobile-panel {
-  display: none;
-  position: fixed; top: var(--nav-h); left: 0; right: 0; bottom: 0; z-index: 99;
-  background: var(--teal-deep); color: var(--on-dark);
-  padding: 16px var(--gutter) 32px; overflow-y: auto;
-}
-.mobile-panel.open { display: block; }
-.mobile-panel .group { padding: 16px 0; border-bottom: 1px solid var(--line-dark); }
-.mobile-panel .group-label { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--lime); margin-bottom: 6px; font-weight: 600; }
-.mobile-panel a { display: block; padding: 10px 0; text-decoration: none; font-size: 17px; }
-.mobile-panel .btn { display: flex; margin-top: 20px; }
-
-@media (max-width: 960px) {
-  .nav-menu, .nav-actions { display: none; }
-  .nav-toggle { display: inline-flex; }
-}
-
-/* ---- Footer ------------------------------------------------------------- */
-.site-footer { background: var(--ink); color: var(--on-dark-muted); padding: 72px 0 36px; font-size: 14px; }
-.footer-grid { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 40px; }
-.footer-brand .logo-crop { --logo-h: 50px; margin-left: -6px; }
-.footer-brand p { margin-top: 16px; max-width: 260px; line-height: 1.6; }
-.footer-col h2 { font: 600 12px/1 var(--font-body); letter-spacing: .14em; text-transform: uppercase; color: var(--on-dark); margin-bottom: 18px; }
-.footer-col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
-.footer-col li a { display: inline-block; padding: 5px 0; }  /* ~31px tap target */
-.footer-col a { text-decoration: none; }
-.footer-col a:hover { color: var(--on-dark); text-decoration: underline; text-underline-offset: 3px; }
-.footer-col a.accent { color: var(--lime); font-weight: 600; }
-.footer-base { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line-dark); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 13px; }
-@media (max-width: 860px) {
-  .footer-grid { grid-template-columns: 1fr 1fr; }
-  .footer-brand { grid-column: 1 / -1; }
-}
 
 .sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;

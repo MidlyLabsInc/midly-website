@@ -20,25 +20,26 @@
      lime "Book a demo" pill ends up wrapping text across three
      lines because the button uses inline padding with no
      white-space: nowrap. Hide the theme toggle, tighten the
-     buttons, force one-line text. */
-  nav {
+     buttons, force one-line text. Scoped to the old nav markup: the
+     shared .site-nav (chrome.css) has its own phone layout. */
+  nav:not(.site-nav) {
     padding: 0 16px !important;
     height: 60px !important;
     gap: 8px !important;
   }
-  .nav-logo img { height: 24px !important; }
-  .nav-actions { gap: 6px !important; }
+  nav:not(.site-nav) .nav-logo img { height: 24px !important; }
+  nav:not(.site-nav) .nav-actions { gap: 6px !important; }
   .theme-toggle { display: none !important; }
-  .nav-actions .btn-ghost {
+  nav:not(.site-nav) .nav-actions .btn-ghost {
     padding: 6px 12px !important;
     font-size: 13px !important;
     white-space: nowrap !important;
   }
   /* "Book a demo" uses inline styles; override with attribute selectors. */
-  .nav-actions a[href*="midly-demo"],
-  .nav-actions a[href*="book-a-demo"],
-  .nav-actions a[href*="calendly.com"],
-  .nav-actions a[href*="cal.com"] {
+  nav:not(.site-nav) .nav-actions a[href*="midly-demo"],
+  nav:not(.site-nav) .nav-actions a[href*="book-a-demo"],
+  nav:not(.site-nav) .nav-actions a[href*="calendly.com"],
+  nav:not(.site-nav) .nav-actions a[href*="cal.com"] {
     padding: 8px 14px !important;
     font-size: 13px !important;
     white-space: nowrap !important;
@@ -110,15 +111,15 @@
 /* Very narrow phones (iPhone SE, 320-380px). The Log in / Book
    a demo pair still gets tight; shrink both one more notch. */
 @media (max-width: 420px) {
-  .nav-logo img { height: 22px !important; }
-  .nav-actions .btn-ghost {
+  nav:not(.site-nav) .nav-logo img { height: 22px !important; }
+  nav:not(.site-nav) .nav-actions .btn-ghost {
     padding: 5px 10px !important;
     font-size: 12px !important;
   }
-  .nav-actions a[href*="midly-demo"],
-  .nav-actions a[href*="book-a-demo"],
-  .nav-actions a[href*="calendly.com"],
-  .nav-actions a[href*="cal.com"] {
+  nav:not(.site-nav) .nav-actions a[href*="midly-demo"],
+  nav:not(.site-nav) .nav-actions a[href*="book-a-demo"],
+  nav:not(.site-nav) .nav-actions a[href*="calendly.com"],
+  nav:not(.site-nav) .nav-actions a[href*="cal.com"] {
     padding: 7px 12px !important;
     font-size: 12px !important;
   }
