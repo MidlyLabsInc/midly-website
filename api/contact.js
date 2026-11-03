@@ -29,6 +29,17 @@ const NOTIFY_TO = process.env.NOTIFY_EMAIL || 'patience@midly.ai';
 const FROM_ADDRESS = process.env.FROM_EMAIL || 'Midly <noreply@midly.ai>';
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+// Enterprise pricing is gated: it is not on any page, and is returned here
+// only after a real Enterprise request has been sent to the team. The amount
+// can be changed in Vercel (ENTERPRISE_PRICE) without a code change.
+const ENTERPRISE_SOURCES = new Set(['Enterprise Demo']);
+const ENTERPRISE_PRICING = {
+  amount: process.env.ENTERPRISE_PRICE || '$6,450',
+  period: 'per month, flat',
+  detail:
+    'Up to 50 seats with every feature, SSO and advanced security, a data processing agreement, an uptime SLA and a dedicated account team.',
+};
+
 // Which form sources join the marketing list. This is an allowlist, not a
 // denylist, because the cost of the two mistakes is not symmetric: missing a
 // lead is a lost email, while adding someone who only wanted to reach a human
@@ -151,7 +162,11 @@ module.exports = async function handler(req, res) {
       console.warn('[contact] contact list add failed (non-blocking)', listResult.reason);
     }
 
-    return res.status(200).json({ ok: true });
+    return res.status(200).json(
+      ENTERPRISE_SOURCES.has(source)
+        ? { ok: true, pricing: ENTERPRISE_PRICING }
+        : { ok: true },
+    );
   } catch (err) {
     console.error('[contact] unexpected error', err);
     return res.status(500).json({ error: 'send_failed' });

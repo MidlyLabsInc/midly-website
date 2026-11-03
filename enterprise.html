@@ -1329,7 +1329,7 @@
     <div class="ent-pricing-wrap">
       <div class="ent-pricing-header">
         <h2 class="ent-pricing-headline">One flat number, up to fifty seats.</h2>
-        <p class="ent-pricing-sub">Past ten seats you stop counting them. $6,450 a month covers up to fifty people, every feature, and the security and support that come with a real contract. No per-seat math, no per-feature upsells, and nothing to renegotiate when someone joins.</p>
+        <p class="ent-pricing-sub">Past ten seats you stop counting them. One flat monthly price covers up to fifty people, every feature, and the security and support that come with a real contract. No per-seat math, no per-feature upsells, and nothing to renegotiate when someone joins.</p>
       </div>
 
       <div class="ent-pricing-table">
@@ -1367,8 +1367,8 @@
         <div class="ent-price-col featured">
           <div class="ent-col-tier">Enterprise</div>
           <div class="ent-col-range">50 seats, every purchase</div>
-          <div class="ent-col-price">$6,450</div>
-          <div class="ent-col-period">/month, flat</div>
+          <div class="ent-col-price">On request</div>
+          <div class="ent-col-period">one flat monthly price</div>
           <ul class="ent-col-features">
             <li><span class="ent-col-check"><svg viewBox="0 0 8 8"><path d="M1 4l2 2 4-4"/></svg></span>Everything in Team</li>
             <li><span class="ent-col-check"><svg viewBox="0 0 8 8"><path d="M1 4l2 2 4-4"/></svg></span>SSO &amp; advanced security</li>
@@ -1376,7 +1376,7 @@
             <li><span class="ent-col-check"><svg viewBox="0 0 8 8"><path d="M1 4l2 2 4-4"/></svg></span>Uptime SLA guarantee</li>
             <li><span class="ent-col-check"><svg viewBox="0 0 8 8"><path d="M1 4l2 2 4-4"/></svg></span>Dedicated account team</li>
           </ul>
-          <a href="https://app.midly.ai/sign-up?plan=enterprise" class="ent-col-cta ent-col-cta-gold">Start and book onboarding</a>
+          <a href="#request" class="ent-col-cta ent-col-cta-gold">See Enterprise pricing</a>
           <a href="https://calendly.com/patience-midly/midly-demo" class="ent-col-cta ent-col-cta-ghost" style="margin-top:10px;">Book a demo first</a>
         </div>
       </div>
@@ -1385,13 +1385,13 @@
 </section>
 
 <!-- CONTACT FORM -->
-<section class="ent-form-section">
+<section class="ent-form-section" id="request">
   <div class="container">
     <div class="ent-form-wrap">
       <div class="ent-form-header">
-        <div class="section-eyebrow" style="text-align:center;">Get in touch</div>
-        <h2 class="section-title" style="text-align:center;">Let's talk about<br>your workflow.</h2>
-        <p class="section-sub" style="text-align:center;margin:0 auto;">Tell us a little about your team and we'll set up a 30-minute call.</p>
+        <div class="section-eyebrow" style="text-align:center;">Enterprise pricing</div>
+        <h2 class="section-title" style="text-align:center;">Get Enterprise<br>pricing.</h2>
+        <p class="section-sub" style="text-align:center;margin:0 auto;">Tell us a little about your team and we'll show you the price straight away, then set up a 30-minute call if you'd like one.</p>
       </div>
 
       <form class="ent-form" id="entForm" novalidate>
@@ -1427,7 +1427,7 @@
           <textarea class="ent-textarea" id="ent-challenge" name="challenge" rows="3" placeholder="e.g. contracts sit in legal for weeks, no visibility into deal status, too many Word doc versions..."></textarea>
         </div>
         <button type="submit" class="ent-submit" id="entSubmit">
-          Request a demo →
+          See Enterprise pricing →
         </button>
         <p id="entFormError" style="display:none;font-size:13px;color:#e0705a;margin-top:12px;text-align:center;">Something went wrong sending your request. Please try again, or email us directly at <a href="mailto:hello@midly.ai" style="color:inherit;">hello@midly.ai</a>.</p>
         <p style="font-size:12px;color:var(--text-dim);line-height:1.6;margin-top:14px;text-align:center;">We use these details only to prepare for your call. Your information is never sold or shared with third parties: see how we handle data on our <a href="/security" style="color:var(--text-muted);text-decoration:underline;">Security page</a>.</p>
@@ -1437,7 +1437,12 @@
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
         <h3 style="font-family:var(--font-display);font-size:22px;letter-spacing:-0.02em;margin-bottom:10px;">Request received.</h3>
-        <p style="font-size:15px;color:var(--text-muted);max-width:420px;margin:0 auto;">We'll be in touch within one business day to set up your call. Want to skip the wait? <a href="https://calendly.com/patience-midly/midly-demo" target="_blank" rel="noopener" style="color:var(--accent);">Book a time directly</a>.</p>
+        <div id="entPricing" style="display:none;margin:4px auto 18px;">
+          <div id="entPriceAmount" style="font-family:var(--font-display);font-size:40px;letter-spacing:-0.03em;line-height:1.1;"></div>
+          <div id="entPricePeriod" style="font-size:14px;color:var(--text-muted);margin-top:4px;"></div>
+          <p id="entPriceDetail" style="font-size:14px;color:var(--text-muted);max-width:420px;margin:12px auto 0;"></p>
+        </div>
+        <p style="font-size:15px;color:var(--text-muted);max-width:420px;margin:0 auto;">We'll be in touch within one business day to set up a call if you'd like one. Want to skip the wait? <a href="https://calendly.com/patience-midly/midly-demo" target="_blank" rel="noopener" style="color:var(--accent);">Book a time directly</a>.</p>
       </div>
     </div>
   </div>
@@ -1572,6 +1577,17 @@
         })
       }).then(function(res) {
         if (!res.ok) throw new Error('send_failed');
+        return res.json().catch(function() { return {}; });
+      }).then(function(data) {
+        // The price is not in this page: the server returns it only after
+        // a real request has reached the team.
+        var p = data && data.pricing;
+        if (p && p.amount) {
+          document.getElementById('entPriceAmount').textContent = p.amount;
+          document.getElementById('entPricePeriod').textContent = p.period || '';
+          document.getElementById('entPriceDetail').textContent = p.detail || '';
+          document.getElementById('entPricing').style.display = 'block';
+        }
         form.style.display = 'none';
         successEl.style.display = 'block';
         try { if (typeof gtag === 'function') gtag('event', 'enterprise_demo_request', { event_category: 'lead' }); } catch (err) {}
@@ -1579,7 +1595,7 @@
         errorEl.textContent = 'Something went wrong sending your request. Please try again, or email us directly at hello@midly.ai.';
         errorEl.style.display = 'block';
         submitBtn.disabled = false;
-        submitBtn.textContent = 'Request a demo →';
+        submitBtn.textContent = 'See Enterprise pricing →';
       });
     });
   })();
