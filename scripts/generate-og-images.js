@@ -32,7 +32,7 @@ const images = [
 <body>
   <div class="wordmark">Midly.ai</div>
   <div class="headline">Midly does the reading.<br>You keep the judgment.</div>
-  <div class="subtitle">Contract review and practice software<br>for attorneys and small firms.</div>
+  <div class="subtitle">The AI-powered commercial<br>contracting workspace.</div>
   <div class="url">midly.ai</div>
 </body></html>`,
   },
