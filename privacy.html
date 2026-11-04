@@ -206,7 +206,7 @@
   <div class="container">
     <a href="/legal" class="page-eyebrow" style="text-decoration:none;">Legal</a>
     <h1 class="page-headline">Privacy Notice</h1>
-    <div class="page-meta">Midly Labs Inc. &nbsp;·&nbsp; Effective April 20, 2026 &nbsp;·&nbsp; Last Updated October 29, 2026</div>
+    <div class="page-meta">Midly Labs Inc. &nbsp;·&nbsp; Effective April 20, 2026 &nbsp;·&nbsp; Last Updated November 4, 2026</div>
     <div class="page-meta">Applies to: Midly CLM (app.midly.ai) and all services at midly.ai</div>
     <div class="page-meta">Legacy Doc HQ is a separate Midly Labs product with its own notice at <a href="https://www.legacydochq.com/privacy" style="color:inherit;">legacydochq.com/privacy</a></div>
   </div>
@@ -229,6 +229,7 @@
         <a href="#retention" class="sidebar-link">Data Retention</a>
         <a href="#your-rights" class="sidebar-link">Your Rights</a>
         <a href="#california" class="sidebar-link">California Residents</a>
+        <a href="#us-states" class="sidebar-link">Other US States</a>
         <a href="#cookies" class="sidebar-link">Cookies</a>
         <a href="#children" class="sidebar-link">Children's Privacy</a>
         <a href="#security" class="sidebar-link">Security</a>
@@ -273,8 +274,8 @@
           <li><strong style="color:var(--text);">Device and technical data:</strong> IP address, browser type and version, device identifiers, operating system</li>
           <li><strong style="color:var(--text);">Authentication data:</strong> login events and session tokens managed by Clerk</li>
           <li><strong style="color:var(--text);">Log data:</strong> server logs, error reports, performance data</li>
-          <li><strong style="color:var(--text);">Analytics data:</strong> page views and behavior data via Google Analytics 4, Microsoft Clarity, and PostHog</li>
-          <li><strong style="color:var(--text);">Marketing signals:</strong> ad interaction data via Meta Pixel (marketing website only)</li>
+          <li><strong style="color:var(--text);">Analytics data:</strong> page views and behavior data via Google Analytics 4 and Microsoft Clarity on midly.ai, only after you allow analytics; via Google Analytics 4 on the app's sign-up pages, only with the choice you made on midly.ai; and via PostHog inside the app</li>
+          <li><strong style="color:var(--text);">Marketing signals:</strong> ad interaction and conversion data via the Meta Pixel and Google's advertising measurement, only after you allow advertising, and never when your browser sends a Global Privacy Control signal</li>
         </ul>
         <h3>From Third Parties</h3>
         <ul>
@@ -327,7 +328,12 @@
           <div class="provider-row">
             <div class="provider-name">Platform analytics</div>
             <div class="provider-role">Legitimate interests</div>
-            <div class="provider-data">Art. 6(1)(f) GDPR: improving the Service. Marketing site measurement relies on consent where required.</div>
+            <div class="provider-data">Art. 6(1)(f) GDPR: improving the Service (PostHog, inside the app, pseudonymous)</div>
+          </div>
+          <div class="provider-row">
+            <div class="provider-name">Website analytics and advertising measurement</div>
+            <div class="provider-role">Consent</div>
+            <div class="provider-data">Art. 6(1)(a) GDPR and the ePrivacy rules on cookies: nothing loads until you choose, and you can withdraw at any time through Cookie settings</div>
           </div>
           <div class="provider-row">
             <div class="provider-name">Marketing communications</div>
@@ -422,18 +428,18 @@
             <div class="provider-data"><a href="https://posthog.com/privacy" target="_blank" rel="noopener">posthog.com/privacy</a></div>
           </div>
           <div class="provider-row">
-            <div class="provider-name">Google Analytics 4</div>
-            <div class="provider-role">Website analytics: page views, session data, referral sources (marketing site)</div>
+            <div class="provider-name">Google Analytics 4 and Google Ads measurement</div>
+            <div class="provider-role">Website analytics: page views, session data, referral sources on midly.ai, and on the app's sign-up pages (page address only, no query string). With advertising consent, conversion measurement for our Google Ads campaigns. Loads only with your consent.</div>
             <div class="provider-data"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></div>
           </div>
           <div class="provider-row">
             <div class="provider-name">Microsoft Clarity</div>
-            <div class="provider-role">Behavior analytics: heatmaps, session recordings (marketing site)</div>
+            <div class="provider-role">Behavior analytics: heatmaps, session recordings (marketing site, only with analytics consent, and never on a page with a form)</div>
             <div class="provider-data"><a href="https://privacy.microsoft.com" target="_blank" rel="noopener">privacy.microsoft.com</a></div>
           </div>
           <div class="provider-row">
             <div class="provider-name">Meta (Facebook)</div>
-            <div class="provider-role">Marketing pixel: ad attribution and conversion tracking (marketing site)</div>
+            <div class="provider-role">Marketing pixel: ad attribution and conversion tracking (marketing site, only with advertising consent, never with Global Privacy Control)</div>
             <div class="provider-data"><a href="https://www.facebook.com/privacy/policy" target="_blank" rel="noopener">facebook.com/privacy/policy</a></div>
           </div>
         </div>
@@ -500,7 +506,7 @@
             <li>Right to know the categories and specific pieces of personal information collected</li>
             <li>Right to delete personal information</li>
             <li>Right to correct inaccurate personal information</li>
-            <li>Right to opt-out of sale or sharing (note: we do not sell personal information)</li>
+            <li>Right to opt out of sale or sharing. We do not sell personal information for money, but our advertising tools on midly.ai may be a sale or sharing under California law; opt out through <a href="/california#right-to-opt-out" data-cookie-settings>Your Privacy Choices</a> or Global Privacy Control</li>
             <li>Right to non-discrimination for exercising your rights</li>
             <li>See our full <a href="/california">California Privacy Notice</a> for details</li>
           </ul>
@@ -511,12 +517,21 @@
 
       <div class="legal-section" id="california">
         <h2>California Residents</h2>
-        <p>If you are a California resident, you have additional rights under the California Consumer Privacy Act (CCPA) and the California Privacy Rights Act (CPRA). We do not sell personal information. For a full description of your California rights and how to exercise them, see our <a href="/california">California Privacy Notice</a>.</p>
+        <p>If you are a California resident, you have additional rights under the California Consumer Privacy Act (CCPA) and the California Privacy Rights Act (CPRA). We do not sell personal information for money. The advertising tools on midly.ai, when you allow them, may be a &ldquo;sale&rdquo; or &ldquo;sharing&rdquo; for cross-context behavioral advertising, and you can opt out through <a href="/california#right-to-opt-out" data-cookie-settings>Your Privacy Choices</a>, Reject all, or Global Privacy Control. For a full description of your California rights and how to exercise them, see our <a href="/california">California Privacy Notice</a>.</p>
+      </div>
+
+      <div class="legal-section" id="us-states">
+        <h2>Other US State Privacy Rights</h2>
+        <p>Residents of states with consumer privacy laws, including Colorado, Connecticut, Virginia, Utah, Texas and Oregon, may have the right to confirm whether we process their personal data, to access it and receive a portable copy, to correct it, to delete it, and to opt out of the sale of personal data, targeted advertising, and profiling that produces legal or similarly significant effects. We do not use personal data for that kind of profiling.</p>
+        <p><strong style="color:var(--text);">Opting out.</strong> Use the <a href="/california#right-to-opt-out" data-cookie-settings>Your Privacy Choices</a> link at the bottom of any page, choose Reject all in the banner, or turn on Global Privacy Control in your browser. We honor Global Privacy Control as a universal opt-out signal.</p>
+        <p><strong style="color:var(--text);">Other requests.</strong> Email <a href="mailto:legal@midly.ai">legal@midly.ai</a> with the subject line "Privacy Request" and your state of residence. We will respond within 45 days, and may extend that once by a further 45 days where the law allows, telling you why.</p>
+        <p><strong style="color:var(--text);">Appeals.</strong> If we decline to act on your request, you may appeal by emailing <a href="mailto:legal@midly.ai">legal@midly.ai</a> with the subject line "Privacy Request Appeal". We will respond to an appeal within 45 days, or within the shorter period your state law sets, and explain our decision. If you are not satisfied, you may contact your state attorney general.</p>
       </div>
 
       <div class="legal-section" id="cookies">
         <h2>Cookies &amp; Tracking Technologies</h2>
-        <p>We use cookies and similar tracking technologies on our marketing website (midly.ai) and platform (app.midly.ai). These include strictly necessary cookies (required for authentication and platform function), analytics cookies (Google Analytics 4, Microsoft Clarity), product analytics (PostHog), and marketing cookies (Meta Pixel).</p>
+        <p>We use cookies and similar tracking technologies on our marketing website (midly.ai) and platform (app.midly.ai). These include strictly necessary cookies (required for authentication and platform function), analytics cookies (Google Analytics 4, Microsoft Clarity), product analytics (PostHog), and advertising cookies (Meta Pixel, Google's advertising measurement).</p>
+        <p>On midly.ai, no analytics or advertising tag loads until you choose in the banner. You can change your choice at any time through <a href="#" data-cookie-settings>Cookie settings</a> or <a href="/california#right-to-opt-out" data-cookie-settings>Your Privacy Choices</a> at the bottom of any page. If your browser sends a Global Privacy Control signal, advertising stays off whatever you choose. The app's sign-up pages read the same choice before loading Google Analytics.</p>
         <p>For a full description of the cookies we use, how to control them, and how to opt out, see our <a href="/cookies">Cookie Policy</a>.</p>
       </div>
 
