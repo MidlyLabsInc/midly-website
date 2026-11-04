@@ -19,8 +19,9 @@
  * updated only from the visitor's choice.
  *
  * The choice is kept in a first-party cookie on .midly.ai for 180 days, so
- * app.midly.ai can read the same decision. "Cookie settings" (any element with
- * data-cookie-settings, or the link added to the footer) reopens the choice.
+ * app.midly.ai can read the same decision. "Your Privacy Choices" and "Cookie
+ * settings" (any element with data-cookie-settings, including the two links
+ * added to the footer) reopen the choice.
  *
  * gtag() and fbq() are defined as queues at once, so the pages' own event
  * calls never throw; they are only sent if the matching tag loads.
@@ -229,7 +230,7 @@
       if (gpc) marketing.disabled = true;
       lm.appendChild(marketing);
       lm.appendChild(
-        document.createTextNode("Advertising: Meta Pixel and Google Ads measurement")
+        document.createTextNode("Advertising: Meta Pixel and Google Ads measurement. Turning this off opts you out of the sale or sharing of your personal information for targeted advertising.")
       );
       fs.appendChild(la);
       fs.appendChild(lm);
@@ -278,20 +279,31 @@
   }
 
   function addSettingsLink() {
-    if (document.querySelector("[data-cookie-settings]")) return;
     var footer = document.querySelector("footer");
-    if (!footer) return;
-    var a = el("a", { href: "#", "data-cookie-settings": "" }, "Cookie settings");
-    // The site footer's bottom row (copyright, location) is where it belongs;
-    // appended to the footer itself it landed below the columns, at the edge.
+    if (!footer || footer.querySelector("[data-cookie-settings]")) return;
+    // "Your Privacy Choices" is the opt-out of sale, sharing and targeted
+    // advertising that California and other US state privacy laws require;
+    // it opens the same choices. Without JavaScript it goes to the California
+    // notice, which explains the other ways to opt out (Reject all, GPC).
+    var choices = el(
+      "a",
+      { href: "/california#right-to-opt-out", "data-cookie-settings": "" },
+      "Your Privacy Choices"
+    );
+    var settings = el("a", { href: "#", "data-cookie-settings": "" }, "Cookie settings");
+    // The site footer's bottom row (copyright, location) is where they belong;
+    // appended to the footer itself they landed below the columns, at the edge.
+    // Kept together in one group: the bottom row spreads its items apart.
     var base = footer.querySelector(".footer-base");
-    if (base) {
+    var group = el("span", {});
+    group.style.cssText = base
+      ? "display:inline-flex;gap:16px;flex-wrap:wrap"
+      : "display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;font-size:13px;opacity:.8";
+    [choices, settings].forEach(function (a) {
       a.style.cssText = "color:inherit;text-decoration:none";
-      base.appendChild(a);
-      return;
-    }
-    a.style.cssText = "display:inline-block;margin-top:12px;font-size:13px;opacity:.8";
-    footer.appendChild(a);
+      group.appendChild(a);
+    });
+    (base || footer).appendChild(group);
   }
 
   document.addEventListener("click", function (e) {

@@ -176,6 +176,18 @@ for (const [path, lines] of added) {
   }
 }
 
+// Tags load only through js/consent.js, after the visitor allows them. A page
+// that brings a tag back outside it tracks visitors before they choose, which
+// is what the privacy notices and state law say we do not do.
+{
+  const { spawnSync } = require("child_process");
+  const check = spawnSync(process.execPath, ["scripts/check-consent-tags.mjs"], { stdio: "inherit" });
+  if (check.status !== 0) {
+    console.error("\n  Commit blocked: a tracking tag loads outside js/consent.js.\n");
+    process.exit(1);
+  }
+}
+
 if (!hits.length) process.exit(0);
 
 const red = (s) => `\x1b[31m${s}\x1b[0m`;
