@@ -305,6 +305,10 @@
     {
       "source": "/fractional-gc",
       "destination": "/fractional-gc.html"
+    },
+    {
+      "source": "/review-links",
+      "destination": "/review-links.html"
     }
   ]
 }
