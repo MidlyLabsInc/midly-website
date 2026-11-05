@@ -20,10 +20,14 @@
 //   POST JSON body         → { ok: true } on success, { error: <code> } on failure
 //   Other methods          → 405
 //   Honeypot _hp filled    → silent 200 (don't tell bots they failed)
+//   Filled in under 3s     → silent 200 (same; only judged when _elapsed is sent)
+//   Reads as a sales pitch → notification only, subject "[Likely spam] ...";
+//                            no autoresponse, no list, no Enterprise price
 //   Missing/invalid email  → 400 invalid_email
 
 const { Resend } = require('resend');
 const { renderAutoresponse, renderNotification } = require('../lib/emails.js');
+const { screenPitch, filledTooFast } = require('../lib/pitch-screen.js');
 
 const NOTIFY_TO = process.env.NOTIFY_EMAIL || 'patience@midly.ai';
 const FROM_ADDRESS = process.env.FROM_EMAIL || 'Midly <noreply@midly.ai>';
@@ -101,6 +105,9 @@ module.exports = async function handler(req, res) {
   if (body._hp && String(body._hp).trim()) {
     return res.status(200).json({ ok: true });
   }
+  if (filledTooFast(body._elapsed)) {
+    return res.status(200).json({ ok: true });
+  }
 
   const email = String(body.email || '').trim().toLowerCase();
   const name = String(body.name || '').trim().slice(0, 200);
@@ -111,7 +118,7 @@ module.exports = async function handler(req, res) {
   }
 
   // Strip control fields from the notification payload.
-  const { _hp, _subject, ...rest } = body;
+  const { _hp, _subject, _elapsed, ...rest } = body;
   // Always include email + name as the first rows for readability.
   const fields = { email, ...(name ? { name } : {}), ...rest };
 
@@ -122,6 +129,13 @@ module.exports = async function handler(req, res) {
   }
   const resend = new Resend(apiKey);
 
+  // A pitch still reaches the team (a misread lead costs a glance, not the
+  // lead) but earns nothing a real lead does. See lib/pitch-screen.js.
+  const screen = screenPitch(fields);
+  if (screen.likelySpam) {
+    console.info('[contact] likely pitch', { source, reasons: screen.reasons });
+  }
+
   try {
     const notification = renderNotification({ source, fields, email, name });
     const autoresponse = renderAutoresponse({ source, name });
@@ -129,23 +143,26 @@ module.exports = async function handler(req, res) {
     // Run these in parallel. Only the team notification is allowed to fail the
     // request: if the autoresponse or the audience write breaks, the lead is
     // still captured and we would rather log it than lose the submission.
+    const subject = body._subject || notification.subject;
     const tasks = [
       resend.emails.send({
         from: FROM_ADDRESS,
         to: NOTIFY_TO,
         replyTo: email,
-        subject: body._subject || notification.subject,
+        subject: screen.likelySpam ? `[Likely spam] ${subject}` : subject,
         html: notification.html,
       }),
-      resend.emails.send({
-        from: FROM_ADDRESS,
-        to: email,
-        subject: autoresponse.subject,
-        html: autoresponse.html,
-      }),
+      screen.likelySpam
+        ? Promise.resolve({ skipped: 'likely_spam' })
+        : resend.emails.send({
+            from: FROM_ADDRESS,
+            to: email,
+            subject: autoresponse.subject,
+            html: autoresponse.html,
+          }),
     ];
 
-    if (LIST_SOURCES.has(source)) {
+    if (LIST_SOURCES.has(source) && !screen.likelySpam) {
       tasks.push(addToList(resend, { email, name, source }));
     }
 
@@ -163,7 +180,7 @@ module.exports = async function handler(req, res) {
     }
 
     return res.status(200).json(
-      ENTERPRISE_SOURCES.has(source)
+      ENTERPRISE_SOURCES.has(source) && !screen.likelySpam
         ? { ok: true, pricing: ENTERPRISE_PRICING }
         : { ok: true },
     );

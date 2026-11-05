@@ -4,3 +4,6 @@
 # checklists. This site deploys the repository root as static files, so
 # anything not listed here is publicly reachable by URL.
 docs/
+
+# Node tests for api/ and lib/. Not part of the site.
+test/
