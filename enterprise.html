@@ -1397,6 +1397,9 @@
   (function() {
     var form = document.getElementById('entForm');
     if (!form) return;
+    // How long the form was open, on this page's own clock. The server drops a
+    // submission made faster than a person could fill it in.
+    var entOpenedAt = Date.now();
     var submitBtn = document.getElementById('entSubmit');
     var errorEl = document.getElementById('entFormError');
     var successEl = document.getElementById('entFormSuccess');
@@ -1424,7 +1427,8 @@
           team_size: form.team_size.value || '',
           challenge: (form.challenge.value || '').trim(),
           source: 'Enterprise Demo',
-          _hp: form._hp.value
+          _hp: form._hp.value,
+          _elapsed: Date.now() - entOpenedAt
         })
       }).then(function(res) {
         if (!res.ok) throw new Error('send_failed');
