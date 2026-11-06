@@ -391,12 +391,15 @@
   // app.midly.ai reports a booked demo to Google Ads (its Calendly webhook)
   // only when the booking itself shows the visitor allowed advertising here,
   // and only under their real GA client id; anything else it drops. Calendly
-  // keeps utm_content through the booking, so that is where both go, as
-  // "--ga:<client id>--mc:1" after the campaign's own value. They are added
-  // at the moment of the click, from the choice on file then, and only when
-  // advertising is allowed and no GPC signal is sent. Otherwise any such
-  // tokens already on the link are removed, so a link built earlier cannot
-  // carry a consent that has since been withdrawn.
+  // returns utm_content on the booking, so that is where both go, as
+  // "--ga:<client id>--mc:1--ts:<click time>" after the campaign's own value.
+  // They are added at the moment of the click, from the choice on file then,
+  // and only when advertising is allowed and no GPC signal is sent. Otherwise
+  // any such tokens already on the link are removed, so a link built earlier
+  // cannot carry a consent that has since been withdrawn. The click time lets
+  // the app ignore a marker on a link saved or shared long after the click.
+  // The marker is a hint the app can only use to stay silent, not proof of
+  // consent: it is a URL parameter, and anyone can type one.
 
   function gaClientId() {
     var m = document.cookie.match(/(?:^|;\s*)_ga=GA\d\.\d+\.(\d+\.\d+)(?:;|$)/);
@@ -414,10 +417,12 @@
     var tokens = (url.searchParams.get("utm_content") || "")
       .split("--")
       .filter(function (t) {
-        return t && !/^(ga|mc):/.test(t);
+        return t && !/^(ga|mc|ts):/.test(t);
       });
     var id = gaClientId();
-    if (choice && choice.marketing && !gpc && id) tokens.push("ga:" + id, "mc:1");
+    if (choice && choice.marketing && !gpc && id) {
+      tokens.push("ga:" + id, "mc:1", "ts:" + Math.floor(Date.now() / 1000));
+    }
     if (tokens.length) url.searchParams.set("utm_content", tokens.join("--"));
     else url.searchParams.delete("utm_content");
     return url.toString();

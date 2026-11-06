@@ -63,26 +63,35 @@ function load(cookies, { gpc = false } = {}) {
 
 const content = (href) => new URL(href).searchParams.get('utm_content');
 
+// The marker ends with the click time; check it is now, then compare the rest.
+const marked = (href, before = 'ga:123456789.1700000000--mc:1') => {
+  const value = content(href);
+  const m = /^(.*)--ts:(\d+)$/.exec(value || '');
+  assert.ok(m, `no click time on ${value}`);
+  assert.ok(Math.abs(Number(m[2]) - Date.now() / 1000) < 5, 'click time is not now');
+  assert.equal(m[1], before);
+};
+
 test('adds the GA id and consent marker when advertising was allowed', () => {
   const { click } = load({ midly_consent: choice(true, true), _ga: GA });
-  assert.equal(content(click(DEMO)), 'ga:123456789.1700000000--mc:1');
+  marked(click(DEMO));
 });
 
 test("keeps the campaign's own utm_content in front", () => {
   const { click } = load({ midly_consent: choice(true, true), _ga: GA });
   const href = click(`${DEMO}?utm_source=linkedin&utm_content=hero-cta`);
-  assert.equal(content(href), 'hero-cta--ga:123456789.1700000000--mc:1');
+  marked(href, 'hero-cta--ga:123456789.1700000000--mc:1');
   assert.equal(new URL(href).searchParams.get('utm_source'), 'linkedin');
 });
 
 test('marks a middle-click into a new tab too', () => {
   const { click } = load({ midly_consent: choice(true, true), _ga: GA });
-  assert.equal(content(click(DEMO, 'auxclick')), 'ga:123456789.1700000000--mc:1');
+  marked(click(DEMO, 'auxclick'));
 });
 
 test('is idempotent across repeat clicks', () => {
   const { click } = load({ midly_consent: choice(true, true), _ga: GA });
-  assert.equal(content(click(click(DEMO))), 'ga:123456789.1700000000--mc:1');
+  marked(click(click(DEMO)));
 });
 
 for (const [label, cookies, opts] of [
@@ -104,8 +113,13 @@ for (const [label, cookies, opts] of [
 
 test('removes stale tokens from a link once consent is withdrawn', () => {
   const { click } = load({ midly_consent: choice(true, false), _ga: GA });
-  assert.equal(content(click(`${DEMO}?utm_content=hero--ga:1.2--mc:1`)), 'hero');
-  assert.equal(content(click(`${DEMO}?utm_content=ga:1.2--mc:1`)), null);
+  assert.equal(content(click(`${DEMO}?utm_content=hero--ga:1.2--mc:1--ts:1`)), 'hero');
+  assert.equal(content(click(`${DEMO}?utm_content=ga:1.2--mc:1--ts:1`)), null);
+});
+
+test('replaces an old marker with a fresh one rather than keeping both', () => {
+  const { click } = load({ midly_consent: choice(true, true), _ga: GA });
+  marked(click(`${DEMO}?utm_content=hero--ga:1.2--mc:1--ts:1`), 'hero--ga:123456789.1700000000--mc:1');
 });
 
 test('leaves links that are not Calendly alone', () => {
