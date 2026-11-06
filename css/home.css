@@ -419,3 +419,16 @@
 /* ---- Founder + get started --------------------------------------------- */
 .founder-final { margin-top: clamp(72px, 8vw, 112px); padding: clamp(64px, 8vw, 104px) 0; }
 #founder { padding-bottom: 0; }
+.proof-rest summary {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; cursor: pointer;
+  padding: 16px 20px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--ivory);
+  list-style: none; min-height: 48px;
+}
+.proof-rest summary::-webkit-details-marker { display: none; }
+.proof-rest summary::after { content: "+"; margin-left: auto; font-size: 20px; line-height: 1; color: var(--text-muted); }
+.proof-rest[open] summary::after { content: "\2212"; }
+.proof-rest summary .clause-label { color: var(--text); }
+.proof-counts { font-size: 14px; color: var(--text-muted); }
+.proof-rest[open] .proof-list { margin-top: 16px; }
+.proof-grid .del { background: #FBE5E3; }
+.proof-grid .ins { background: #E3F1E6; }
