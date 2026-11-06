@@ -63,6 +63,8 @@ const TRACKERS = {
   _gid: 'GA1.2.3',
   _clck: 'x',
   _clsk: 'y',
+  ph_phc_uwh7VHa0qAfInMH4Cpe4xYJxCupRpOvIrDdgrE3Xz0E_posthog: '%7B%22distinct_id%22%3A%22x%22%7D',
+  __ph_opt_in_out_phc_uwh7VHa0qAfInMH4Cpe4xYJxCupRpOvIrDdgrE3Xz0E: '0',
   _fbp: 'fb.1.2',
   _fbc: 'fb.1.3',
   _gcl_au: '1.1.1',
@@ -71,12 +73,17 @@ const TRACKERS = {
 
 test('Reject all deletes every tracker cookie, keeps the choice and other cookies', () => {
   const jar = load({ ...TRACKERS, midly_consent: choiceCookie(false, false) });
-  assert.deepEqual([...jar.keys()].sort(), ['midly_consent', 'unrelated']);
+  assert.deepEqual([...jar.keys()].sort(), [
+    '__ph_opt_in_out_phc_uwh7VHa0qAfInMH4Cpe4xYJxCupRpOvIrDdgrE3Xz0E',
+    'midly_consent',
+    'unrelated',
+  ]);
 });
 
 test('analytics only: analytics cookies stay, advertising cookies go', () => {
   const jar = load({ ...TRACKERS, midly_consent: choiceCookie(true, false) });
-  for (const kept of ['_ga', '_ga_Z3SHWTKPRF', '_gid', '_clck', '_clsk']) assert.ok(jar.has(kept), kept);
+  const posthog = 'ph_phc_uwh7VHa0qAfInMH4Cpe4xYJxCupRpOvIrDdgrE3Xz0E_posthog';
+  for (const kept of ['_ga', '_ga_Z3SHWTKPRF', '_gid', '_clck', '_clsk', posthog]) assert.ok(jar.has(kept), kept);
   for (const gone of ['_fbp', '_fbc', '_gcl_au']) assert.ok(!jar.has(gone), gone);
 });
 
