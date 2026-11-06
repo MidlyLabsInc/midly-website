@@ -23,6 +23,10 @@
  * settings" (any element with data-cookie-settings, including the two links
  * added to the footer) reopen the choice.
  *
+ * Calendly links get the visitor's advertising consent and GA client id added
+ * when clicked, and only then, so app.midly.ai can tell which booked demos
+ * it may report to Google Ads (see "Calendly bookings" below).
+ *
  * gtag() and fbq() are defined as queues at once, so the pages' own event
  * calls never throw; they are only sent if the matching tag loads.
  */
@@ -382,7 +386,59 @@
     open(true);
   });
 
-  window.midlyConsent = { open: function () { open(true); }, read: readChoice };
+  // ---- Calendly bookings ----------------------------------------------------
+  //
+  // app.midly.ai reports a booked demo to Google Ads (its Calendly webhook)
+  // only when the booking itself shows the visitor allowed advertising here,
+  // and only under their real GA client id; anything else it drops. Calendly
+  // keeps utm_content through the booking, so that is where both go, as
+  // "--ga:<client id>--mc:1" after the campaign's own value. They are added
+  // at the moment of the click, from the choice on file then, and only when
+  // advertising is allowed and no GPC signal is sent. Otherwise any such
+  // tokens already on the link are removed, so a link built earlier cannot
+  // carry a consent that has since been withdrawn.
+
+  function gaClientId() {
+    var m = document.cookie.match(/(?:^|;\s*)_ga=GA\d\.\d+\.(\d+\.\d+)(?:;|$)/);
+    return m ? m[1] : null;
+  }
+
+  function calendlyUrl(href, choice) {
+    var url;
+    try {
+      url = new URL(href);
+    } catch (e) {
+      return href;
+    }
+    if (!/(^|\.)calendly\.com$/.test(url.hostname)) return href;
+    var tokens = (url.searchParams.get("utm_content") || "")
+      .split("--")
+      .filter(function (t) {
+        return t && !/^(ga|mc):/.test(t);
+      });
+    var id = gaClientId();
+    if (choice && choice.marketing && !gpc && id) tokens.push("ga:" + id, "mc:1");
+    if (tokens.length) url.searchParams.set("utm_content", tokens.join("--"));
+    else url.searchParams.delete("utm_content");
+    return url.toString();
+  }
+
+  function markCalendlyLink(e) {
+    var a = e.target && e.target.closest && e.target.closest('a[href*="calendly.com"]');
+    if (!a) return;
+    var next = calendlyUrl(a.href, readChoice());
+    if (next !== a.href) a.href = next;
+  }
+  // Capture phase, so the link is right before the browser follows it.
+  // auxclick covers a middle-click into a new tab.
+  document.addEventListener("click", markCalendlyLink, true);
+  document.addEventListener("auxclick", markCalendlyLink, true);
+
+  window.midlyConsent = {
+    open: function () { open(true); },
+    read: readChoice,
+    calendlyUrl: function (href) { return calendlyUrl(href, readChoice()); },
+  };
 
   function start() {
     addSettingsLink();
