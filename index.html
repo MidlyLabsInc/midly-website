@@ -211,33 +211,49 @@
     <div class="hero-row">
       <p class="hero-sub">From the first request to the next renewal, Midly brings contract review, negotiation, collaboration, and intelligence into one connected workspace.</p>
       <div class="hero-ctas">
-        <a class="btn btn-primary" href="https://calendly.com/patience-midly/midly-demo" target="_blank" rel="noopener" data-cta="demo" data-cta-location="hero">
-          Book a demo
+        <a class="btn btn-primary" href="https://app.midly.ai/sign-up" data-cta="trial" data-cta-location="hero">
+          Start free trial
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
-        <a class="btn btn-ghost-dark" href="#how" data-cta="explore" data-cta-location="hero">See how it works</a>
+        <a class="btn btn-ghost-dark" href="https://calendly.com/patience-midly/midly-demo" target="_blank" rel="noopener" data-cta="demo" data-cta-location="hero">Book a demo</a>
       </div>
     </div>
 
+    <!-- The finding below is Midly's real output (findAiInsights, Nov 5 2026)
+         on a vendor's published MSA, reviewed from the customer's side. Text is
+         verbatim except the bracketed substitutions that remove the vendor's
+         and the customer's names. Do not edit the wording; rerun the review. -->
     <div class="hero-visual">
+      <ol class="flow" aria-label="The contract lifecycle in Midly">
+        <li><span aria-hidden="true">01</span>Intake</li>
+        <li class="is-on" aria-current="step"><span aria-hidden="true">02</span>Review</li>
+        <li><span aria-hidden="true">03</span>Negotiate</li>
+        <li><span aria-hidden="true">04</span>Store</li>
+        <li><span aria-hidden="true">05</span>Monitor</li>
+      </ol>
       <div class="window">
         <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i><span>app.midly.ai / review</span></div>
-        <img class="hero-shot" src="/brand/screenshots/review-findings.webp" width="1568" height="722" fetchpriority="high" decoding="async"
-          alt="A completed Midly review of a sample software subscription agreement: the contract text on the left, and on the right the AI Insights panel listing each term area, such as scope and deliverables and payment terms, with a Full contract review button and an Ask Midly link on every row.">
+        <div class="finding">
+          <div class="finding-clause">
+            <p class="clause-label">Section 22.8, from their paper</p>
+            <p class="clause"><mark>[Vendor] may modify this Agreement at any time by posting a revised version at [the vendor&rsquo;s website]</mark>, which modifications will become effective as of the first day of the calendar month following the month in which they were first posted&hellip;</p>
+            <p class="clause-label finding-gap">Suggested revision</p>
+            <p class="clause">&hellip;at [the vendor&rsquo;s website] <span class="ins">and providing Customer with at least sixty (60) days&rsquo; prior written notice of any material modification. Material modifications shall not become effective with respect to any then-current Order Term without Customer&rsquo;s prior written consent.</span>&hellip;</p>
+          </div>
+          <div class="finding-card">
+            <div class="mock-head"><span class="mock-title">AI Insights</span><span class="pill pill-risk">Red deviation</span></div>
+            <p class="finding-title">Unilateral Agreement Modification Right</p>
+            <p class="finding-body">&hellip;the sole remedy is non-renewal under Section 6.3. This means [Vendor] can unilaterally alter payment terms, data rights, liability caps, or any other provision mid-relationship without [the customer&rsquo;s] consent.</p>
+            <a class="text-link" href="#real-review">Read the full finding <span aria-hidden="true">&darr;</span></a>
+          </div>
+        </div>
       </div>
-      <figure class="hero-inset">
-        <img src="/brand/screenshots/review-which-side-crop.webp" width="980" height="600" decoding="async"
-          alt="Midly's Review a document dialog asking which side you are on: buying or receiving, selling or providing, something else, or not sure.">
-      </figure>
-      <span class="hero-marker hero-marker-1" aria-hidden="true">1</span>
-      <span class="hero-marker hero-marker-2" aria-hidden="true">2</span>
     </div>
   </div>
 </header>
 <div class="wrap">
     <ul class="hero-legend">
-      <li><span class="legend-num" aria-hidden="true">1</span><span><b>Read from your side.</b> Pick the party you represent, so the risks flagged are yours.</span></li>
-      <li><span class="legend-num" aria-hidden="true">2</span><span><b>AI Insights beside the contract.</b> Every term area summarized, with Ask Midly on each one.</span></li>
+      <li><span><b>A real finding, not a mockup.</b> Midly&rsquo;s review of a SaaS vendor&rsquo;s published agreement, read from the customer&rsquo;s side. Names removed.</span></li>
       <li class="hero-promise"><span><b>Midly does the reading. You keep the judgment.</b> Built by a commercial attorney who still runs her own client work through it.</span></li>
     </ul>
 </div>
@@ -252,15 +268,13 @@
     </div>
     <ol class="problem-list">
       <li><h3>Legal hears about it last.</h3><p>The deal has a close date before anyone in legal has seen the paper.</p></li>
-      <li><h3>The context never arrives.</h3><p>A draft lands with no note on what was promised on the call, or which side you are on.</p></li>
       <li><h3>Nobody is sure which version is current.</h3><p>Three drafts in three inboxes, and a markup made against the wrong one.</p></li>
-      <li><h3>The decisions are buried in email.</h3><p>Why the cap moved lives in a thread half the people involved were never copied on.</p></li>
       <li><h3>Signed, filed, forgotten.</h3><p>An executed agreement comes back out of the drawer once something has already gone wrong.</p></li>
     </ol>
   </div>
 </section>
 
-<!-- ============================== 3. LIFECYCLE ============================== -->
+<!-- ============================== 3. HOW IT WORKS: LIFECYCLE, PRODUCT TOUR, AFTER SIGNATURE ============================== -->
 <section class="section lifecycle" id="how" aria-labelledby="how-title">
   <div class="wrap">
     <div class="section-head center">
@@ -301,13 +315,9 @@
       </li>
     </ol>
     <p class="lifecycle-note center">On the same agreement, the positions you took last round come with you into the next review. <strong>Findings are marked new, carried forward, or resolved, so a round does not start from nothing.</strong></p>
-  </div>
-</section>
 
-<!-- ============================== 4. PRODUCT TOUR ============================== -->
-<section class="section" id="features" aria-labelledby="features-title">
-  <div class="wrap">
-    <div class="section-head">
+    <!-- Folded in from the former Product Tour section; #features kept. -->
+    <div class="section-head subhead" id="features">
       <p class="eyebrow">Inside Midly</p>
       <h2 id="features-title">Know which changes deserve your attention.</h2>
       <p>When the markup comes back, Midly reads each change against your playbook, shows you the ones that move the risk, and suggests whether to accept, push back or counter. You decide what goes into the document.</p>
@@ -395,13 +405,95 @@
         </div>
       </div>
     </div>
+
+    <!-- Folded in from the former After Signature section; #after-signature kept. -->
+    <div class="after on-dark after-inset" id="after-signature">
+    <div class="section-head">
+      <p class="eyebrow">Beyond the signature</p>
+      <h2 id="after-title">The agreement is signed. The intelligence shouldn&rsquo;t stop.</h2>
+      <p>Negotiated for weeks, then filed and never read again. Midly reads an agreement once it is marked executed, so your repository holds the terms you are actually living under, not a pile of files somebody would have to open.</p>
+    </div>
+    <div class="after-grid">
+      <ul class="after-points">
+        <li><h3>What it says, without reading it again</h3><p>What kind of agreement it is, when it starts and ends, the governing law, the payment terms, the liability cap, and whether indemnities are uncapped.</p></li>
+        <li><h3>The deadline comes and finds you</h3><p>Auto-renewal and the notice period are pulled out of clause 14, and Midly emails reminders before expiry and on the last day to give notice.</p></li>
+        <li><h3>A version your client can read</h3><p>Email your client a plain-English summary of the key terms. Your playbook analysis stays with you.</p></li>
+        <li><h3>Ask it anything about that agreement</h3><p>Ask Midly answers from the executed document and quotes the language it relied on.</p></li>
+      </ul>
+      <div>
+        <div class="repo-card">
+          <div class="mock-head"><span class="clause-label">Repository</span><span class="pill pill-lime">Executed</span></div>
+          <p class="repo-title">Master Services Agreement</p>
+          <div class="repo-facts">
+            <div><small>Effective</small><b>1 Mar 2026</b></div>
+            <div><small>Expires</small><b>28 Feb 2027</b></div>
+            <div><small>Governing law</small><b>Delaware</b></div>
+          </div>
+          <div class="mock-row"><div><b>Renews automatically</b><small>Notice to stop it: 60 days</small></div><span class="pill pill-calm">Acts on its own</span></div>
+          <div class="mock-row flag"><div><b>Liability capped at 12 months of fees</b><small>Indemnities uncapped</small></div><span class="pill pill-risk">Read this</span></div>
+          <div class="repo-alert">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+            <span>Last day to give notice: 30 December. Midly emails a reminder that morning.</span>
+          </div>
+        </div>
+        <p class="shot-caption"><span class="tag tag-illus">Illustration</span></p>
+      </div>
+    </div>
+    </div>
   </div>
 </section>
 
-<!-- ============================== 4b. DIFFERENTIATION ============================== -->
-<section class="section diff" id="connected" aria-labelledby="diff-title">
+<!-- ============================== 4. A REAL REVIEW ============================== -->
+<!-- Generated from the saved review output (findAiInsights, Nov 5 2026, a SaaS
+     vendor's published MSA, customer side). Verbatim except the bracketed
+     substitutions removing the vendor's and customer's names. Do not reword:
+     rerun the review and regenerate instead. -->
+<section class="section review-proof" id="real-review" aria-labelledby="review-title">
   <div class="wrap">
-    <div class="section-head center">
+    <div class="section-head">
+      <p class="eyebrow">A real review</p>
+      <h2 id="review-title">What Midly found in a vendor&rsquo;s own paper.</h2>
+      <p>We ran a SaaS vendor&rsquo;s published master subscription agreement through Midly, from the customer&rsquo;s side, against a customer-side playbook. It returned 14 findings. This is the one it marked red, exactly as Midly wrote it, with the names removed.</p>
+    </div>
+    <div class="proof-grid">
+      <div class="window">
+        <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i><span>Section 22.8, with Midly&rsquo;s suggested revision</span></div>
+        <div class="mock">
+          <p class="clause-label">Their clause, and the change Midly proposed</p>
+          <p class="clause">[Vendor] may modify this Agreement at any time by posting a revised version at [the vendor's website]<span class="del">, which modifications will become effective as of the first day of the calendar month following the month in which they were first posted; provided, however, that if an Order specifies a fixed term of 12 months or longer, the modifications will instead be effective immediately upon the start of the next Renewal Order Term. In either case, if Customer objects to the updated Agreement, as its sole and exclusive remedy, Customer may choose not to renew in accordance with Section 6.3.</span><span class="ins"> and providing Customer with at least sixty (60) days' prior written notice of any material modification. Material modifications shall not become effective with respect to any then-current Order Term without Customer's prior written consent. If Customer objects to any material modification, Customer may terminate the applicable Order(s) upon written notice to [Vendor] within thirty (30) days of receiving notice of such modification, and [Vendor] will issue a Pro-Rated Refund for any prepaid, unused Fees.</span> For the avoidance of doubt, any Order is subject to the version of the Agreement in effect at the time of the Order.</p>
+          <p class="proof-legend"><span class="del">Struck</span> is their text Midly would remove. <span class="ins">Underlined</span> is what it would add.</p>
+        </div>
+      </div>
+      <div class="proof-finding">
+        <div class="mock-head"><span class="mock-title">Unilateral Agreement Modification Right</span><span class="pill pill-risk">Red deviation</span></div>
+        <p class="clause-label">The finding</p>
+        <p>Section 22.8 permits [Vendor] to modify this Agreement at any time by posting a revised version online, with changes becoming effective as early as the first day of the following calendar month. As the customer buying this subscription, [the customer] has no right to object and negotiate: the sole remedy is non-renewal under Section 6.3. This means [Vendor] can unilaterally alter payment terms, data rights, liability caps, or any other provision mid-relationship without [the customer's] consent. The playbook is explicit that no unilateral amendment rights are acceptable, making this a hard deviation. The practical exposure for a small firm is that a material change to, say, the data processing terms or the liability cap could take effect with as little as one month's notice and no ability to push back short of walking away from the platform.</p>
+        <p class="clause-label">The note Midly drafted for the other side</p>
+        <blockquote class="proof-note">I accept that [Vendor] needs the ability to update its standard terms over time. What my client cannot accept is a unilateral right to modify material terms, including pricing, liability, and data rights, with no consent mechanism and no remedy beyond non-renewal. I propose a sixty-day advance notice requirement for material changes, with a right to terminate and receive a pro-rated refund if my client objects. This is a standard accommodation for enterprise SaaS customers and does not prevent [Vendor] from updating non-material operational terms on its current timeline.</blockquote>
+      </div>
+    </div>
+    <div class="proof-rest">
+      <p class="clause-label">The other 13 findings on the same agreement</p>
+      <ul class="proof-list">
+          <li><span class="sev sev-yellow">Yellow</span>Auto-Renewal Pricing: Up to 9% Annual Increase</li>
+          <li><span class="sev sev-yellow">Yellow</span>Aggregated Data Use for [Vendor]'s Business Purposes</li>
+          <li><span class="sev sev-yellow">Yellow</span>Support Failure Remedy Limited to Re-Performance Only</li>
+          <li><span class="sev sev-yellow">Yellow</span>Availability Remedy Requires Two Consecutive Failing Months</li>
+          <li><span class="sev sev-yellow">Yellow</span>[Vendor] Logo Use Without Prior Consent</li>
+          <li><span class="sev sev-yellow">Yellow</span>AUP Incorporated by Reference Without Version Lock</li>
+          <li><span class="sev sev-yellow">Yellow</span>Assignment Permitted on Merger Without Customer Consent</li>
+          <li><span class="sev sev-yellow">Yellow</span>Sensitive Information Prohibition: Customer Bears Full Risk</li>
+          <li><span class="sev sev-yellow">Yellow</span>New York Governing Law and Venue</li>
+          <li><span class="sev sev-yellow">Yellow</span>Data Processing Addendum Incorporated by URL</li>
+          <li><span class="sev sev-green">Green</span>Feedback Ownership Assigned to [Vendor]</li>
+          <li><span class="sev sev-green">Green</span>Post-Termination Data Access: 30-Day Window</li>
+          <li><span class="sev sev-green">Green</span>Termination for Cause: 30-Day Cure Period</li>
+      </ul>
+    </div>
+    <p class="proof-fine"><span class="tag tag-real">Product output</span> Midly&rsquo;s review informs your judgment; it is not legal advice, and a finding is a starting point for the attorney reading it, not a conclusion.</p>
+
+    <!-- Folded in from the former Differentiation section; #connected kept. -->
+    <div class="section-head center subhead" id="connected">
       <p class="eyebrow">Why not a chatbot and Word?</p>
       <h2 id="diff-title">AI review is only the beginning.</h2>
       <p>Midly connects the decisions made during negotiation to the agreement that gets signed, and to the obligations that follow it.</p>
@@ -494,43 +586,6 @@
   </div>
 </section>
 
-<!-- ============================== 6. AFTER SIGNATURE ============================== -->
-<section class="section after on-dark" id="after-signature" aria-labelledby="after-title">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">Beyond the signature</p>
-      <h2 id="after-title">The agreement is signed. The intelligence shouldn&rsquo;t stop.</h2>
-      <p>Negotiated for weeks, then filed and never read again. Midly reads an agreement once it is marked executed, so your repository holds the terms you are actually living under, not a pile of files somebody would have to open.</p>
-    </div>
-    <div class="after-grid">
-      <ul class="after-points">
-        <li><h3>What it says, without reading it again</h3><p>What kind of agreement it is, when it starts and ends, the governing law, the payment terms, the liability cap, and whether indemnities are uncapped.</p></li>
-        <li><h3>The deadline comes and finds you</h3><p>Auto-renewal and the notice period are pulled out of clause 14, and Midly emails reminders before expiry and on the last day to give notice.</p></li>
-        <li><h3>A version your client can read</h3><p>Email your client a plain-English summary of the key terms. Your playbook analysis stays with you.</p></li>
-        <li><h3>Ask it anything about that agreement</h3><p>Ask Midly answers from the executed document and quotes the language it relied on.</p></li>
-      </ul>
-      <div>
-        <div class="repo-card">
-          <div class="mock-head"><span class="clause-label">Repository</span><span class="pill pill-lime">Executed</span></div>
-          <p class="repo-title">Master Services Agreement</p>
-          <div class="repo-facts">
-            <div><small>Effective</small><b>1 Mar 2026</b></div>
-            <div><small>Expires</small><b>28 Feb 2027</b></div>
-            <div><small>Governing law</small><b>Delaware</b></div>
-          </div>
-          <div class="mock-row"><div><b>Renews automatically</b><small>Notice to stop it: 60 days</small></div><span class="pill pill-calm">Acts on its own</span></div>
-          <div class="mock-row flag"><div><b>Liability capped at 12 months of fees</b><small>Indemnities uncapped</small></div><span class="pill pill-risk">Read this</span></div>
-          <div class="repo-alert">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
-            <span>Last day to give notice: 30 December. Midly emails a reminder that morning.</span>
-          </div>
-        </div>
-        <p class="shot-caption"><span class="tag tag-illus">Illustration</span></p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ============================== 6b. PRICING ============================== -->
 <section class="section pricing" id="pricing" aria-labelledby="pricing-title">
   <div class="wrap">
@@ -567,7 +622,7 @@
   </div>
 </section>
 
-<!-- ============================== 7. FOUNDER ============================== -->
+<!-- ============================== 7. FOUNDER + GET STARTED ============================== -->
 <section class="section" id="founder" aria-labelledby="founder-title">
   <div class="wrap founder-grid">
     <div class="founder-photo">
@@ -584,21 +639,20 @@
       </div>
     </div>
   </div>
-</section>
-
-<!-- ============================== 8. FINAL CTA + PLANS ============================== -->
-<section class="section final on-dark" id="get-started" aria-labelledby="final-title">
-  <div class="wrap">
-    <p class="eyebrow">See it on your own work</p>
-    <h2 id="final-title">Make room for the work that matters.</h2>
-    <p class="lede">See how Midly fits the way you already work, from the first request to the next renewal.</p>
-    <div class="hero-ctas">
-      <a class="btn btn-primary" href="https://calendly.com/patience-midly/midly-demo" target="_blank" rel="noopener" data-cta="demo" data-cta-location="final">
-        See Midly in action
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-      </a>
+  <!-- Former final CTA section; #get-started kept. -->
+  <div class="final on-dark founder-final" id="get-started">
+    <div class="wrap">
+      <p class="eyebrow">See it on your own work</p>
+      <h2 id="final-title">Make room for the work that matters.</h2>
+      <p class="lede">See how Midly fits the way you already work, from the first request to the next renewal.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://app.midly.ai/sign-up" data-cta="trial" data-cta-location="final">
+          Start free trial
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <a class="btn btn-ghost-dark" href="https://calendly.com/patience-midly/midly-demo" target="_blank" rel="noopener" data-cta="demo" data-cta-location="final">See Midly in action</a>
+      </div>
     </div>
-
   </div>
 </section>
 

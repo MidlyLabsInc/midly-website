@@ -352,3 +352,70 @@
 .plans-fine { margin-top: 20px; font-size: 13px; color: var(--text-muted); line-height: 1.6; }
 .plans-fine a { color: var(--text); }
 @media (max-width: 860px) { .plan-row { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---- Hero: lifecycle strip + a real finding ----------------------------
+   The strip names the stages; the window under it shows Review, the one a
+   visitor can judge in five seconds. Text is Midly's saved output. */
+.flow {
+  list-style: none; margin: 0 0 14px; padding: 0; display: flex; flex-wrap: wrap; gap: 8px;
+}
+.flow li {
+  font-size: 13px; font-weight: 600; letter-spacing: .02em;
+  padding: 7px 14px 7px 10px; border-radius: 999px; color: var(--on-dark-muted);
+  border: 1px solid var(--line-dark);
+}
+.flow li span { margin-right: 8px; opacity: .6; }
+.flow li.is-on { background: var(--lime); color: var(--ink); border-color: var(--lime); }
+.flow li.is-on span { opacity: .7; }
+.finding { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); color: var(--ink); }
+.finding-clause { padding: clamp(18px, 2.4vw, 30px); }
+.finding-clause .clause { font-size: 16px; }
+.finding-clause mark { background: #FBE5E3; color: inherit; padding: 1px 2px; border-radius: 3px; }
+.finding-gap { margin-top: 20px; }
+.finding-card { padding: clamp(18px, 2.4vw, 30px); background: #F8F7F3; border-left: 1px solid rgba(10, 10, 10, 0.08); }
+.finding-title { font-family: var(--font-display); font-weight: 700; font-size: 19px; line-height: 1.25; border-left: 3px solid #D9534F; padding-left: 12px; }
+.finding-body { margin-top: 12px; font-size: 15px; line-height: 1.6; color: rgba(10, 10, 10, 0.75); }
+.finding-card .text-link { display: inline-block; margin-top: 14px; font-size: 14px; }
+.hero-legend:has(> li:nth-child(2):last-child) { grid-template-columns: 1fr 1fr; }
+@media (max-width: 760px) {
+  .finding { grid-template-columns: minmax(0, 1fr); }
+  .finding-card { border-left: 0; border-top: 1px solid rgba(10, 10, 10, 0.08); }
+  .flow li:not(.is-on) { display: none; }
+}
+
+/* ---- How it works: folded-in tour and after-signature ------------------ */
+.subhead { margin-top: clamp(72px, 8vw, 112px); }
+#features .tour, .subhead + .tour { margin-top: 40px; }
+.after-inset {
+  margin-top: clamp(72px, 8vw, 112px); border-radius: var(--radius-lg);
+  padding: clamp(28px, 5vw, 64px);
+}
+
+/* ---- A real review ------------------------------------------------------ */
+.review-proof { background: var(--paper); border-top: 1px solid var(--line); }
+.proof-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 48px); margin-top: 48px; align-items: start; }
+.proof-grid .window { border-color: rgba(10, 10, 10, 0.08); }
+.proof-grid .clause { font-size: 16px; }
+.proof-legend { margin-top: 16px; font-size: 13px; color: rgba(10, 10, 10, 0.6); }
+.proof-finding { font-size: 16px; line-height: 1.6; }
+.proof-finding .mock-head { gap: 12px; align-items: flex-start; }
+.proof-finding .mock-title { font-family: var(--font-display); font-size: 22px; font-weight: 700; line-height: 1.2; }
+.proof-finding .clause-label { margin-top: 20px; }
+.proof-finding p:not(.clause-label) { margin-top: 6px; color: var(--text-muted); }
+.proof-note { margin: 8px 0 0; padding: 14px 16px; border-left: 3px solid var(--lime); background: var(--ivory); border-radius: 0 10px 10px 0; font-size: 15px; color: var(--text); }
+.proof-rest { margin-top: 40px; }
+.proof-list { list-style: none; margin: 12px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; }
+.proof-list li { display: flex; gap: 12px; align-items: baseline; padding: 10px 0; border-top: 1px solid var(--line); font-size: 15px; }
+.sev { flex-shrink: 0; width: 56px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
+.sev-red { color: #9B2C24; }
+.sev-yellow { color: #8A6A00; }
+.sev-green { color: #1F6B3A; }
+.proof-fine { margin-top: 28px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; font-size: 14px; color: var(--text-muted); }
+.review-proof #connected { margin-top: clamp(72px, 8vw, 112px); }
+@media (max-width: 900px) {
+  .proof-grid, .proof-list { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ---- Founder + get started --------------------------------------------- */
+.founder-final { margin-top: clamp(72px, 8vw, 112px); padding: clamp(64px, 8vw, 104px) 0; }
+#founder { padding-bottom: 0; }
