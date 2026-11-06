@@ -100,8 +100,12 @@
   // apply(), so it covers the moment of refusal and every later page load
   // with a refusal on file (cookies a tag set on another midly.ai page too).
   // Google's and Meta's own cookies on their domains are out of reach here.
+  // The ph_..._posthog cookie is the app's: app.midly.ai sets it on .midly.ai
+  // so the identifier carries across subdomains, which puts it within reach
+  // here. PostHog's __ph_opt_in_out_ record is left alone; it is the opt-out.
 
-  var ANALYTICS_COOKIES = /^(_ga|_ga_[A-Za-z0-9]+|_gid|_gat(_.*)?|_clck|_clsk)$/;
+  var ANALYTICS_COOKIES =
+    /^(_ga|_ga_[A-Za-z0-9]+|_gid|_gat(_.*)?|_clck|_clsk|ph_phc_[A-Za-z0-9]+_posthog)$/;
   var MARKETING_COOKIES = /^(_fbp|_fbc|_gcl_[a-z]+)$/;
 
   // The same tags' entries outside cookies, by exact name (observed after
