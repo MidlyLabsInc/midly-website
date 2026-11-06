@@ -91,8 +91,45 @@
 
   var loaded = { ga: false, pixel: false, clarity: false };
 
+  // ---- Withdrawal -----------------------------------------------------------
+  //
+  // Refusing a category deletes the cookies its tags left behind. Without
+  // this, someone who accepted and later chose Reject all kept _ga and _fbp in
+  // their browser indefinitely: nothing read them any more, but a withdrawal
+  // that leaves the identifiers in place is only half of one. It runs from
+  // apply(), so it covers the moment of refusal and every later page load
+  // with a refusal on file (cookies a tag set on another midly.ai page too).
+  // Google's and Meta's own cookies on their domains are out of reach here.
+
+  var ANALYTICS_COOKIES = /^(_ga|_ga_[A-Za-z0-9]+|_gid|_gat(_.*)?|_clck|_clsk)$/;
+  var MARKETING_COOKIES = /^(_fbp|_fbc|_gcl_[a-z]+)$/;
+
+  function expire(name) {
+    // A cookie can only be deleted with the domain it was set with, and the
+    // tags pick their own (GA uses the top domain, .midly.ai), so try each.
+    var host = location.hostname;
+    var domains = ["", "; domain=" + host, "; domain=." + host.replace(/^www\./, "")];
+    if (/(^|\.)midly\.ai$/.test(host)) domains.push("; domain=.midly.ai");
+    domains.forEach(function (d) {
+      document.cookie = name + "=; path=/; max-age=0" + d;
+    });
+  }
+
+  function clearRefused(analytics, marketing) {
+    document.cookie.split(/;\s*/).forEach(function (pair) {
+      var name = pair.split("=")[0];
+      if (
+        (!analytics && ANALYTICS_COOKIES.test(name)) ||
+        (!marketing && MARKETING_COOKIES.test(name))
+      ) {
+        expire(name);
+      }
+    });
+  }
+
   function apply(choice) {
     var marketing = choice.marketing && !gpc;
+    clearRefused(choice.analytics, marketing);
     window.gtag("consent", "update", {
       analytics_storage: choice.analytics ? "granted" : "denied",
       ad_storage: marketing ? "granted" : "denied",
@@ -183,9 +220,17 @@
   }
 
   function decide(box, choice) {
+    // Google Analytics stops on the consent update in apply(), but the Meta
+    // Pixel and Clarity, once running in this page, keep going until it is
+    // left. If either was just refused, reload so they are gone now rather
+    // than at the next navigation.
+    var stopNow =
+      (loaded.pixel && !(choice.marketing && !gpc)) ||
+      (loaded.clarity && !choice.analytics);
     writeChoice(choice);
     apply(choice);
     close(box);
+    if (stopNow) location.reload();
   }
 
   function open(detailed) {
