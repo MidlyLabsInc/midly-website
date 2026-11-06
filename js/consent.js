@@ -104,6 +104,24 @@
   var ANALYTICS_COOKIES = /^(_ga|_ga_[A-Za-z0-9]+|_gid|_gat(_.*)?|_clck|_clsk)$/;
   var MARKETING_COOKIES = /^(_fbp|_fbc|_gcl_[a-z]+)$/;
 
+  // The same tags' entries outside cookies, by exact name (observed after
+  // Accept all on 2026-11-06; GA4 writes none). Only these: the rest of the
+  // site's storage is not theirs to clear.
+  var ANALYTICS_STORAGE = { session: ["_cltk"] }; // Clarity
+  var MARKETING_STORAGE = { local: ["lastExternalReferrer", "lastExternalReferrerTime"] }; // Meta Pixel
+
+  function removeStored(keys) {
+    [["local", "localStorage"], ["session", "sessionStorage"]].forEach(function (s) {
+      (keys[s[0]] || []).forEach(function (k) {
+        try {
+          window[s[1]].removeItem(k);
+        } catch (e) {
+          // Storage can be blocked outright; then there is nothing to remove.
+        }
+      });
+    });
+  }
+
   function expire(name) {
     // A cookie can only be deleted with the domain it was set with, and the
     // tags pick their own (GA uses the top domain, .midly.ai), so try each.
@@ -125,6 +143,8 @@
         expire(name);
       }
     });
+    if (!analytics) removeStored(ANALYTICS_STORAGE);
+    if (!marketing) removeStored(MARKETING_STORAGE);
   }
 
   function apply(choice) {

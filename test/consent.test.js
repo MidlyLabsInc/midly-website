@@ -12,8 +12,15 @@ const SOURCE = fs.readFileSync(path.join(__dirname, '..', 'js', 'consent.js'), '
 
 const choiceCookie = (a, m) => encodeURIComponent(JSON.stringify({ a, m, t: 1793900000000 }));
 
-function load(cookies, { gpc = false } = {}) {
+const fakeStorage = (entries) => {
+  const m = new Map(Object.entries(entries));
+  return { map: m, removeItem: (k) => m.delete(k) };
+};
+
+function load(cookies, { gpc = false, local = {}, session = {} } = {}) {
   const jar = new Map(Object.entries(cookies));
+  const localStorage = fakeStorage(local);
+  const sessionStorage = fakeStorage(session);
   const stubElement = () => ({ style: {}, appendChild() {}, setAttribute() {}, parentNode: { insertBefore() {} } });
   const document = {
     readyState: 'complete',
@@ -40,9 +47,13 @@ function load(cookies, { gpc = false } = {}) {
   Object.assign(window, {
     document,
     navigator: { globalPrivacyControl: gpc },
+    localStorage,
+    sessionStorage,
     location: { hostname: 'www.midly.ai', protocol: 'https:', reload() {} },
   });
   vm.runInNewContext(SOURCE, window);
+  jar.local = localStorage.map;
+  jar.session = sessionStorage.map;
   return jar;
 }
 
@@ -78,4 +89,21 @@ test('Global Privacy Control removes advertising cookies even after Accept all',
 test('Accept all without GPC deletes nothing', () => {
   const jar = load({ ...TRACKERS, midly_consent: choiceCookie(true, true) });
   assert.equal(jar.size, Object.keys(TRACKERS).length + 1);
+});
+
+const STORAGE = {
+  local: { lastExternalReferrer: 'x', lastExternalReferrerTime: '1', siteSetting: 'keep' },
+  session: { _cltk: 'x', siteSession: 'keep' },
+};
+
+test('Reject all removes the tags\' storage entries and nothing else', () => {
+  const jar = load({ midly_consent: choiceCookie(false, false) }, STORAGE);
+  assert.deepEqual([...jar.local.keys()], ['siteSetting']);
+  assert.deepEqual([...jar.session.keys()], ['siteSession']);
+});
+
+test('analytics only: Clarity storage stays, Meta storage goes', () => {
+  const jar = load({ midly_consent: choiceCookie(true, false) }, STORAGE);
+  assert.ok(jar.session.has('_cltk'));
+  assert.ok(!jar.local.has('lastExternalReferrer'));
 });
